@@ -9,6 +9,7 @@ const Invite = new Schema(
     date: { type: Date },
     time: { type: Number },
     accept: { type: Boolean },
+    to: { type: String, required: true },
     creatorId: { type: String, required: true }
   },
   { timestamps: true, toJSON: { virtuals: true } }

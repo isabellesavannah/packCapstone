@@ -9,7 +9,7 @@ class UserProfileService {
   }
 
   async delete(id) {
-    const closedUserProfile = await dbContext.UserProfile.findOneAndUpdate({ _id: id }, { closed: true })
+    const closedUserProfile = await dbContext.UserProfile.findOneAndUpdate({ _id: id }, { closed: true }, { new: true })
     socketService.messageRoom('general', 'close:profile', closedUserProfile)
     return closedUserProfile
   }
