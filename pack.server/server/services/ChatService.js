@@ -1,8 +1,11 @@
 import { dbContext } from '../db/DbContext'
 import { BadRequest } from '../utils/Errors'
+import socketService from './SocketService'
 class ChatService {
   async create(body) {
-    return await dbContext.Chat.create(body)
+    const chat = await dbContext.Chat.create(body)
+    socketService.messageRoom('general', 'create:chat', chat)
+    return chat
   }
 
   async delete(id) {

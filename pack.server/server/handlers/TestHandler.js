@@ -29,4 +29,8 @@ export class TestHandler extends SocketHandler {
       payload
     })
   }
+
+  joinRoom(roomName) {
+    this.socket.join(roomName)
+  }
 }
