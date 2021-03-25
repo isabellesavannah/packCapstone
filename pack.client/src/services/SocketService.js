@@ -32,7 +32,7 @@ class SocketService extends SocketHandler {
   closeProfile(payload) {
     const index = AppState.profiles.findIndex(p => p.id === payload.id)
     AppState.profiles.splice(index, 1, payload)
-    console.log('closeProfile')
+    console.log('closeProfile', payload)
     return payload
   }
 }
