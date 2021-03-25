@@ -8,8 +8,23 @@
 </template>
 
 <script>
+import { computed, onMounted, reactive } from 'vue'
+import { AppState } from '../AppState'
+import { socketService } from '../services/SocketService'
+
 export default {
-  name: 'Home'
+  name: 'Home',
+  setup() {
+    onMounted(() => {
+      socketService.emit('join:room', 'general')
+    })
+    const state = reactive({
+      chats: computed(() => AppState.chats)
+    })
+    return {
+      state
+    }
+  }
 }
 </script>
 

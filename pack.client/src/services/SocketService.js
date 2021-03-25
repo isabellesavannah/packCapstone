@@ -1,3 +1,4 @@
+// import { AppState } from '../AppState'
 import { AppState } from '../AppState'
 import { SocketHandler } from '../utils/SocketHandler'
 
@@ -6,9 +7,9 @@ class SocketService extends SocketHandler {
   constructor() {
     super()
     this
-      .on('create:post', this.createPost)
-      .on('remove:post', this.removePost)
-      .on('update:post', this.updatePost)
+      .on('create:chat', this.createChat)
+      .on('create:profile', this.createProfile)
+      .on('close:profile', this.closeProfile)
   }
 
   authenticate(bearerToken) {
@@ -19,19 +20,20 @@ class SocketService extends SocketHandler {
     console.log(payload.message)
   }
 
-  createPost(payload) {
-    console.log(payload)
-    AppState.posts.push(payload)
+  createChat(payload) {
+    console.log('chat created')
   }
 
-  removePost(id) {
-    const index = AppState.posts.findIndex(p => p.id === id)
-    AppState.posts.splice(index, 1)
+  createProfile(payload) {
+    console.log('profile created', payload)
+    AppState.profiles.push(payload)
   }
 
-  updatePost(payload) {
-    const index = AppState.posts.findIndex(p => p.id === payload.id)
-    AppState.posts.splice(index, 1, payload)
+  closeProfile(payload) {
+    const index = AppState.profiles.findIndex(p => p.id === payload.id)
+    AppState.profiles.splice(index, 1, payload)
+    console.log('closeProfile')
+    return payload
   }
 }
 

@@ -25,7 +25,6 @@ AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function() {
   await accountService.getAccount()
   // chatService.getChat() NOTE add in once service created
   socketService.authenticate(AuthService.bearer)
-  console.log('something')
 
   // NOTE if there is something you want to do once the user is authenticated, place that here
 })

@@ -12,6 +12,7 @@ export class TestHandler extends SocketHandler {
     this
       .on('TEST_EVENT', this.testEvent)
       .on('ANOTHER_TEST_EVENT', this.anotherTestEvent)
+      .on('join:room', this.joinRoom)
   }
 
   async testEvent(payload) {

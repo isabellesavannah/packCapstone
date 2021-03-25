@@ -1,12 +1,16 @@
 import { dbContext } from '../db/DbContext'
 import { BadRequest } from '../utils/Errors'
+import socketService from './SocketService'
 class UserProfileService {
   async create(body) {
-    return await dbContext.UserProfile.create(body)
+    const profile = await dbContext.UserProfile.create(body)
+    socketService.messageRoom('general', 'create:profile', profile)
+    return profile
   }
 
   async delete(id) {
     const closedUserProfile = await dbContext.UserProfile.findOneAndUpdate({ _id: id }, { closed: true })
+    socketService.messageRoom('general', 'close:profile', closedUserProfile)
     return closedUserProfile
   }
 
