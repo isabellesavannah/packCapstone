@@ -3,8 +3,10 @@ import { BadRequest } from '../utils/Errors'
 import socketService from './SocketService'
 class ChatService {
   async create(body) {
-    const chat = await (await dbContext.Chat.create(body.message))
-    socketService.messageUser(body.to, 'create:chat', chat)
+    const chat = await (await dbContext.Chat.create(body))
+
+    socketService.messageRoom(body.to, 'create:chat', chat)
+
     return chat
   }
 

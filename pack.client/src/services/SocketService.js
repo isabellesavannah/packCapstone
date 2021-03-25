@@ -10,6 +10,7 @@ class SocketService extends SocketHandler {
       .on('create:chat', this.createChat)
       .on('create:profile', this.createProfile)
       .on('close:profile', this.closeProfile)
+      .on('create:invite', this.createInvite)
   }
 
   authenticate(bearerToken) {
@@ -34,6 +35,10 @@ class SocketService extends SocketHandler {
     AppState.profiles.splice(index, 1, payload)
     console.log('closeProfile', payload)
     return payload
+  }
+
+  createInvite(payload) {
+    AppState.invites.push(payload)
   }
 }
 

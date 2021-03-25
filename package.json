@@ -1,16 +1,14 @@
-
-  {
-    "name": "pack",
-    "version": "1.0.0",
-    "scripts": {
-      "build": "npm run setup:client && npm run setup:server && npm run build:client",
-      "setup:client": "cd pack.client && npm i",
-      "setup:server": "cd pack.server && npm i",
-      "build:client": "npm run --prefix pack.client build",
-      "start": "node pack.server/index.js"
-    },
-    "engines": {
-      "node": "^14.15.4"
-    }
+{
+  "name": "pack",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npm run setup:client && npm run setup:server && npm run build:client",
+    "setup:client": "cd pack.client && npm i",
+    "setup:server": "cd pack.server && npm i",
+    "build:client": "npm run --prefix pack.client build",
+    "start": "node pack.server/index.js"
+  },
+  "engines": {
+    "node": "^14.15.4"
   }
-  
+}

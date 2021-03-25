@@ -19,7 +19,8 @@ export default {
       socketService.emit('join:room', 'general')
     })
     const state = reactive({
-      chats: computed(() => AppState.chats)
+      chats: computed(() => AppState.chats),
+      invites: computed(() => AppState.invites)
     })
     return {
       state

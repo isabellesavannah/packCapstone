@@ -3,12 +3,7 @@ const Schema = mongoose.Schema
 
 const Invite = new Schema(
   {
-    partySize: { type: Number },
-    location: { type: String },
-    duration: { type: Number },
-    date: { type: Date },
-    time: { type: Number },
-    accept: { type: Boolean },
+    accepted: { type: Boolean, required: true, default: false },
     to: { type: String, required: true },
     creatorId: { type: String, required: true }
   },
