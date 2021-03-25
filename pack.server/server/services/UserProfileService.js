@@ -22,24 +22,37 @@ class UserProfileService {
     return await dbContext.UserProfile.find(query).populate('creator')
   }
 
-  async editUserProfile(id, update, userId) {
-    let UserProfile = await this.findById(id)
+  // async editUserProfile(id, update, userId) {
+  //   let UserProfile = await this.findById(id)
+  //   if (UserProfile.creatorId !== userId) {
+  //     // if json throw a UserProfile._doc.watevs
+  //     throw new BadRequest('Unauthorized')
+  //   }
+  //   const editUserProfile = await this.findById(id)
+  //   if (!editUserProfile.closed) {
+  //     // const NOTE
+  //   }
+  //   delete update.closed
+  //   UserProfile = await dbContext.UserProfile.findOneAndUpdate({ _id: id, closed: false }, update, {
+  //     new: true
+  //   })
+  //   if (!UserProfile) {
+  //     throw new BadRequest('Invalid ID')
+  //   }
+  //   return UserProfile
+  // }
+
+  async editUserProfile(id, editedProfile, userId) {
+    const UserProfile = await this.findById(id)
     if (UserProfile.creatorId !== userId) {
-      // if json throw a UserProfile._doc.watevs
       throw new BadRequest('Unauthorized')
     }
-    const editUserProfile = await this.findById(id)
-    if (!editUserProfile.closed) {
-      // const NOTE
+    const profile = await dbContext.UserProfile.findOneAndUpdate({ _id: id }, editedProfile)
+    if (!profile) {
+      throw new BadRequest('invalid id')
     }
-    delete update.closed
-    UserProfile = await dbContext.UserProfile.findOneAndUpdate({ _id: id, closed: false }, update, {
-      new: true
-    })
-    if (!UserProfile) {
-      throw new BadRequest('Invalid ID')
-    }
-    return UserProfile
+    return profile
   }
 }
+
 export const userProfileService = new UserProfileService()

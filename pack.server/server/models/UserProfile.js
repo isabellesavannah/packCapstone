@@ -9,8 +9,9 @@ const UserProfile = new Schema(
     size: { type: Number, required: true },
     sex: { type: String, required: true },
     fixed: { type: Boolean, required: true },
-    engergy: { type: Number, required: true },
+    energy: { type: Number, required: true },
     location: { type: String },
+    status: { type: Boolean, required: true, default: false },
     closed: { type: Boolean, required: true, default: false },
     creatorId: { type: String, required: true }
   },
