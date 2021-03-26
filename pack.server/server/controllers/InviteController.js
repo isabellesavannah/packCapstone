@@ -7,7 +7,7 @@ export class InviteController extends BaseController {
     super('api/invites')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
-      .get('', this.getAllById)
+      .get('', this.getAll)
       .post('', this.create)
       .delete('/:id', this.delete)
   }
