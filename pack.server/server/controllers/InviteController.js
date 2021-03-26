@@ -14,7 +14,7 @@ export class InviteController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      return res.send(await inviteService.find(req.query))
+      return res.send(await inviteService.getInvites(req.query))
     } catch (error) {
       next(error)
     }
@@ -24,7 +24,7 @@ export class InviteController extends BaseController {
     try {
       req.body.creatorId = req.userInfo.id
       req.body.from = req.userInfo.id
-      res.send(201, await inviteService.create(req.body))
+      res.send(201, await inviteService.createInvite(req.body))
     } catch (error) {
       next(error)
     }
