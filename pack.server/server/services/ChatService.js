@@ -3,7 +3,7 @@ import { BadRequest } from '../utils/Errors'
 import socketService from './SocketService'
 class ChatService {
   async create(body) {
-    const chat = await (await dbContext.Chat.create(body))
+    const chat = (await dbContext.Chat.create(body))
 
     socketService.messageRoom(body.to, 'create:chat', chat)
 

@@ -5,6 +5,7 @@ const Invite = new Schema(
   {
     accepted: { type: Boolean, required: true, default: false },
     to: { type: String, required: true },
+    from: { type: String, required: true },
     creatorId: { type: String, required: true }
   },
   { timestamps: true, toJSON: { virtuals: true } }
