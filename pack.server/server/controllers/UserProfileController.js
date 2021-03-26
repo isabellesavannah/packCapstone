@@ -14,8 +14,8 @@ export class UserProfileController extends BaseController {
       .post('', this.createUserProfile)
       .put('/:id', this.editUserProfile)
       .delete('/:id', this.closeUserProfile)
-      // Calling Invite Service
-      .get('/:id/invitations', this.getMyInvitations)
+      // Calling Invitation Service
+      .get('/:id/invitation', this.getMyInvitations)
   }
 
   async getAll(req, res, next) {
@@ -69,11 +69,11 @@ export class UserProfileController extends BaseController {
     }
   }
 
-  // Invite Service Methods
+  // Invitation Service Methods
   async getMyInvitations(req, res, next) {
     try {
-      const myInvites = await invitationService.getMyInvitations(req.params.id)
-      res.send(myInvites)
+      const myInvitations = await invitationService.getMyInvitations(req.params.id)
+      res.send(myInvitations)
     } catch (error) {
       next(error)
     }
