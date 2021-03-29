@@ -11,8 +11,13 @@ class InvitationService {
     return invitation
   }
 
+  async getAll(query) {
+    const invitations = await dbContext.Invitation.find(query)
+    return invitations
+  }
+
   async deleteInvitation(id) {
-    await dbContext.findOneByIdAndDelete(id)
+    await dbContext.Invitation.findByIdAndDelete(id)
     return id
   }
 }
