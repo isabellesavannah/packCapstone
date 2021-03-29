@@ -20,5 +20,13 @@ export default class ProfileService {
       logger.error(error)
     }
   }
+
+  async deleteActiveProfile(id) {
+    try {
+      await api.delete('api/userprofile/' + id)
+    } catch (error) {
+      logger.error(error)
+    }
+  }
 }
 export const profileService = new ProfileService()

@@ -1,5 +1,5 @@
 <template>
-  <div class="CreateProfile flex-grow-1 d-flex flex-column align-items-center">
+  <div class="createProfile flex-grow-1 d-flex flex-column align-items-center">
     <div class="container">
       <div class="row">
         <form class="form-inline" @submit.prevent="CreateProfile()">
@@ -66,16 +66,14 @@
           </button>
         </form>
       </div>
-      </form>
     </div>
-  </div>
   </div>
 </template>
 
 <script>
 import { reactive } from '@vue/reactivity'
 import { logger } from '../utils/Logger'
-import { profileService } from '../services/ProfileService'
+import { profileService } from '../services/CreateProfileService'
 export default {
   name: 'CreateProfile',
   setup() {

@@ -21,7 +21,7 @@ export default class InvitationController extends BaseController {
     }
   }
 
-  async createInvitation(req, res, next) {
+  async create(req, res, next) {
     try {
       const invitation = await invitationService.createInvitation(req.body)
       res.send(201, invitation)
