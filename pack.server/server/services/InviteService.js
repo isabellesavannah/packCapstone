@@ -3,8 +3,8 @@ import { dbContext } from '../db/DbContext'
 class InviteService {
   async createInvite(body) {
     const invite = (await dbContext.Invite.create(body))
-    const invitation = (await dbContext.Invitation.create({ profileId: body.to, inviteId: invite.id, accepted: invite.accepted }))
-    return invite & invitation
+    const invitation = (await dbContext.Invitation.create({ profileId: body.to, inviteId: invite.id, accepted: body.accepted }))
+    return invite && invitation
   }
 
   async delete(id) {
