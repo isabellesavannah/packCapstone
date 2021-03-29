@@ -10,5 +10,10 @@ class InvitationService {
     const invitation = await dbContext.Invitation.create(data)
     return invitation
   }
+
+  async deleteInvitation(id) {
+    await dbContext.findOneByIdAndDelete(id)
+    return id
+  }
 }
 export const invitationService = new InvitationService()

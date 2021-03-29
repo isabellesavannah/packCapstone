@@ -31,7 +31,7 @@ export class InvitationController extends BaseController {
 
   async delete(req, res, next) {
     try {
-      res.send(await invitationService.delete(req.params.id))
+      res.send(await invitationService.deleteInvitation(req.params.id))
     } catch (error) {
       next(error)
     }
