@@ -836,7 +836,7 @@ i{
 
 }
 i:hover{
-  transition: .2s;
+  transition: .1s;
   color:rgb(194, 68, 188);
   text-shadow: 0 0 20px palevioletred;
 }
@@ -849,7 +849,7 @@ i:hover{
 }
 
 .button:hover{
-  transition: .2s;
+  transition: .1s;
   color:aqua;
   text-shadow: rgb(31, 182, 182);
   cursor: pointer;
