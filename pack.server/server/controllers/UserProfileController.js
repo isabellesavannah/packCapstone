@@ -15,7 +15,7 @@ export class UserProfileController extends BaseController {
       .put('/:id', this.editUserProfile)
       .delete('/:id', this.closeUserProfile)
       // Calling Invitation Service
-      .get('/:id/invitation', this.getMyInvitations)
+      .get('/:id/invitations', this.getMyInvitations)
   }
 
   async getAll(req, res, next) {

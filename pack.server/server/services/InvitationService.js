@@ -6,9 +6,19 @@ class InvitationService {
     return invitations
   }
 
-  async createInvitation(inviteId, profileId) {
-    const invitation = await dbContext.Invitation.create({ inviteId: inviteId, profileId: profileId, accepted: false })
+  async createInvitation(data) {
+    const invitation = await dbContext.Invitation.create(data)
     return invitation
+  }
+
+  async getAll(query) {
+    const invitations = await dbContext.Invitation.find(query)
+    return invitations
+  }
+
+  async deleteInvitation(id) {
+    await dbContext.Invitation.findByIdAndDelete(id)
+    return id
   }
 }
 export const invitationService = new InvitationService()

@@ -1,4 +1,5 @@
 import BaseController from '../utils/BaseController'
+// @ts-ignore
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { invitationService } from '../services/InvitationService'
 
@@ -31,7 +32,7 @@ export default class InvitationController extends BaseController {
 
   async delete(req, res, next) {
     try {
-      res.send(await invitationService.delete(req.params.id))
+      res.send(await invitationService.deleteInvitation(req.params.id))
     } catch (error) {
       next(error)
     }
