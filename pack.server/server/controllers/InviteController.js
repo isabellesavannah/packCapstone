@@ -1,7 +1,6 @@
 import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { inviteService } from '../services/InviteService'
-import { invitationController } from '../controllers/InvitationController'
 
 export class InviteController extends BaseController {
   constructor() {
@@ -26,7 +25,6 @@ export class InviteController extends BaseController {
       req.body.creatorId = req.userInfo.id
       req.body.from = req.userInfo.id
       const invite = await inviteService.createInvite(req.body)
-      await invitationController.createInvitation(invite.id, req.body.to)
       res.send(201, invite)
     } catch (error) {
       next(error)

@@ -6,8 +6,8 @@ class InvitationService {
     return invitations
   }
 
-  async createInvitation(inviteId, profileId) {
-    const invitation = await dbContext.Invitation.create({ inviteId: inviteId, profileId: profileId, accepted: false })
+  async createInvitation(data) {
+    const invitation = await dbContext.Invitation.create(data)
     return invitation
   }
 }
