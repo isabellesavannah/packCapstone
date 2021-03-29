@@ -2,7 +2,7 @@ import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { invitationService } from '../services/InvitationService'
 
-export class InvitationController extends BaseController {
+export default class InvitationController extends BaseController {
   constructor() {
     super('api/invitations')
     this.router
@@ -20,7 +20,7 @@ export class InvitationController extends BaseController {
     }
   }
 
-  async create(req, res, next) {
+  async createInvitation(req, res, next) {
     try {
       const invitation = await invitationService.createInvitation(req.body)
       res.send(201, invitation)
