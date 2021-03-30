@@ -19,12 +19,18 @@ export const AuthService = initialize({
   }
 })
 
-AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function() {
+AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function () {
   setBearer(AuthService.bearer)
   AppState.user = AuthService.user
   await accountService.getAccount()
   // chatService.getChat() NOTE add in once service created
   socketService.authenticate(AuthService.bearer)
 
+  AppState.profiles.forEach(p => {
+    if (p.creatorId === AppState.account._id) {
+      router.push({ name: 'Account' })
+      return p
+    } else { router.push({ name: 'CreateProfile' }) }
+  })
   // NOTE if there is something you want to do once the user is authenticated, place that here
 })
