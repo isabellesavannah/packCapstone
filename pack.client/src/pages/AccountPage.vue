@@ -1,6 +1,6 @@
 <template>
   <div class="about text-center">
-    <h1>Welcome {{ activeProfile.petName }}</h1>
+    <h1>{{ activeProfile.petName }}</h1>
     <img class="rounded" :src="activeProfile.img" alt="" />
     <p>{{ activeProfile.bio }}</p>
   </div>
