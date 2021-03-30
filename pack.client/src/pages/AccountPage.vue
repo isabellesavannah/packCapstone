@@ -1,19 +1,23 @@
 <template>
   <div class="about text-center">
-    <h1>Welcome {{ account.name }}</h1>
-    <img class="rounded" :src="account.picture" alt="" />
-    <p>{{ account.email }}</p>
+    <h1>Welcome {{ activeProfile.petName }}</h1>
+    <img class="rounded" :src="activeProfile.img" alt="" />
+    <p>{{ activeProfile.bio }}</p>
   </div>
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { AppState } from '../AppState'
+import { profileService } from '../services/ProfileService'
+import { useRoute } from 'vue-router'
 export default {
   name: 'Account',
   setup() {
+    const route = useRoute()
+    onMounted(() => profileService.getProfileById(route.params.id))
     return {
-      account: computed(() => AppState.account)
+      activeProfile: computed(() => AppState.activeProfile)
     }
   }
 }

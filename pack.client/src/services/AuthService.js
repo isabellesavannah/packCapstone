@@ -48,7 +48,7 @@ AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function () {
   } else if (window.location.href.includes('Profiles')) {
     router.push({ name: 'Profiles' })
   } else {
-    router.push({ name: 'Account' })
+    router.push({ name: 'Account', params: { id: foundProfile._id } })
   }
   // NOTE if there is something you want to do once the user is authenticated, place that here
 })
