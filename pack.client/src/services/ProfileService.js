@@ -2,6 +2,15 @@ import { api } from './AxiosService'
 import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
 export default class ProfileService {
+  async getAll() {
+    try {
+      const res = await api.get('api/userprofile')
+      AppState.profiles = res.data
+    } catch (error) {
+      logger.error(error)
+    }
+  }
+
   async getProfileById(id) {
     try {
       const res = await api.get('api/userprofile/' + id)

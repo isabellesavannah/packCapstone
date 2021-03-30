@@ -1,5 +1,5 @@
 <template>
-  <div class="modal createChatModal" :id="'createChatModal' + list.id" tabindex="-1" role="dialog">
+  <div class="modal createChatModal" :id="'createChatModal' + chat.id" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">

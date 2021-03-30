@@ -2,7 +2,7 @@
   <div class="createProfile flex-grow-1 d-flex flex-column align-items-center">
     <div class="container">
       <div class="row">
-        <form class="form-inline" @submit.prevent="CreateProfile()">
+        <form class="form-inline" @submit.prevent="createProfile">
           <input
             type="text"
             name="petName"
@@ -31,31 +31,31 @@
             v-model="state.newProfile.bio"
           />
           <div class="form-group">
-            <label for="size">Dogs Size</label>
-            <select class="form-control" id="size">
-              <option>5lbs-20lbs</option>
-              <option>20lbs-45lbs</option>
-              <option>45lbs-65lbs</option>
+            <label for="size">Dog's Weight in Pounds</label>
+            <select class="form-control" id="size" v-model="state.newProfile.size">
+              <option>5-20</option>
+              <option>20-45</option>
+              <option>45-65</option>
               <option>65+</option>
             </select>
           </div>
           <div class="form-group">
             <label for="fixed">Is your dog neutered?</label>
-            <select class="form-control" id="fixed">
+            <select class="form-control" id="fixed" v-model="state.newProfile.fixed">
               <option>Yes</option>
               <option>No</option>
             </select>
           </div>
           <div class="form-group">
             <label for="sex">Your dogs sex?</label>
-            <select class="form-control" id="sex">
+            <select class="form-control" id="sex" v-model="state.newProfile.sex">
               <option>Female</option>
               <option>Male</option>
             </select>
           </div>
           <div class="form-group">
             <label for="energy">What is your dogs energy?</label>
-            <select class="form-control" id="energy">
+            <select class="form-control" id="energy" v-model="state.newProfile.energy">
               <option>High Energy</option>
               <option>Medium Energy</option>
               <option>Low Energy</option>
@@ -73,7 +73,8 @@
 <script>
 import { reactive } from '@vue/reactivity'
 import { logger } from '../utils/Logger'
-import { profileService } from '../services/CreateProfileService'
+import { profileService } from '../services/ProfileService'
+import router from '../router'
 export default {
   name: 'CreateProfile',
   setup() {
@@ -85,6 +86,7 @@ export default {
       async createProfile() {
         try {
           await profileService.createProfile(state.newProfile)
+          router.push('Account')
         } catch (error) {
           logger.error(error)
         }

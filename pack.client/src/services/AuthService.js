@@ -5,6 +5,7 @@ import router from '../router'
 import { setBearer } from './AxiosService'
 import { accountService } from './AccountService'
 import { socketService } from './SocketService'
+import { profileService } from './ProfileService'
 
 export const AuthService = initialize({
   domain,
@@ -26,11 +27,16 @@ AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function () {
   // chatService.getChat() NOTE add in once service created
   socketService.authenticate(AuthService.bearer)
 
-  AppState.profiles.forEach(p => {
+  await profileService.getAll()
+  AppState.profiles.forEach((p, i) => {
     if (p.creatorId === AppState.account._id) {
+      console.log('if statement')
       router.push({ name: 'Account' })
       return p
-    } else { router.push({ name: 'CreateProfile' }) }
+    } else if (i === AppState.profiles.length - 1) {
+      console.log('else statement')
+      router.push({ name: 'CreateProfile' })
+    }
   })
   // NOTE if there is something you want to do once the user is authenticated, place that here
 })
