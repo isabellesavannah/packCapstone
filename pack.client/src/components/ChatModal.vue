@@ -1,5 +1,5 @@
 <template>
-  <div class="modal createChatModal" :id="'createChatModal' + chat.id" tabindex="-1" role="dialog">
+  <div class="modal createChatModal" :id="'createChatModal' + userProfile.id" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
@@ -27,6 +27,8 @@ import { AppState } from '../AppState'
 import { reactive } from '@vue/reactivity'
 // eslint-disable-next-line no-unused-vars
 import { computed } from 'vue'
+import { chatsService } from '../services/ChatsService'
+import $ from 'jquery'
 
 export default {
   name: 'Chat',
@@ -40,7 +42,10 @@ export default {
       state,
       async createChat() {
         // eslint-disable-next-line no-unused-expressions
-        state.newChat.userId
+        // state.newChat.userProfileId = props.profile.id
+        await chatsService.createChat(state.newChat)
+        $('#createChatModal' + `${state.newChat.id}`).modal('toggle')
+        state.newChat = {}
       }
     }
   },
