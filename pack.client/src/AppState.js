@@ -5,5 +5,7 @@ export const AppState = reactive({
   user: {},
   account: {},
   profiles: [],
+  activeProfile: {},
+  activeChat: {},
   chats: []
 })
