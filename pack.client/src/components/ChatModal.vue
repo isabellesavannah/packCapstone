@@ -22,27 +22,28 @@
 </template>
 
 <script>
-import $ from 'jquery'
 import { AppState } from '../AppState'
-import { chatsService } from '../services/ChatsService'
+// eslint-disable-next-line no-unused-vars
 import { reactive } from '@vue/reactivity'
-import { compile, computed } from 'vue'
+// eslint-disable-next-line no-unused-vars
+import { computed } from 'vue'
 
 export default {
   name: 'Chat',
   setup() {
     const state = reactive({
       newChat: {},
-      activeUserProfile: computed (()=> AppState.activeProfile),
-      chats: computed(() => AppState.chats.filter((c)=> c.userId === state.userProfile.id))
+      activeUserProfile: computed(() => AppState.activeProfile),
+      chats: computed(() => AppState.chats.filter((c) => c.userId === state.userProfile.id))
     })
     return {
       state,
       async createChat() {
+        // eslint-disable-next-line no-unused-expressions
         state.newChat.userId
       }
     }
-  }
+  },
   components: {}
 }
 </script>
