@@ -30,7 +30,6 @@ import { compile, computed } from 'vue'
 
 export default {
   name: 'Chat',
-  },
   setup() {
     const state = reactive({
       newChat: {},
@@ -43,7 +42,7 @@ export default {
         state.newChat.userId
       }
     }
-  },
+  }
   components: {}
 }
 </script>
