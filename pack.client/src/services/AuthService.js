@@ -28,15 +28,27 @@ AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function () {
   socketService.authenticate(AuthService.bearer)
 
   await profileService.getAll()
-  AppState.profiles.forEach((p, i) => {
-    if (p.creatorId === AppState.account._id) {
-      console.log('if statement')
-      router.push({ name: 'Account' })
-      return p
-    } else if (i === AppState.profiles.length - 1) {
-      console.log('else statement')
-      router.push({ name: 'CreateProfile' })
-    }
-  })
+  // AppState.profiles.forEach((p, i) => {
+  //   console.log(AppState)
+  //   debugger
+  //   if (p.creatorId === AppState.account._id) {
+  //     console.log('if statement')
+  //     router.push({ name: 'Account' })
+  //     return p
+  //   } else if (i === AppState.profiles.length - 1) {
+  //     console.log('else statement')
+  //     router.push({ name: 'CreateProfile' })
+  //   }
+  // })
+
+  console.log(window.location)
+  const foundProfile = AppState.profiles.find(p => p.creatorId === AppState.account._id)
+  if (foundProfile === undefined) {
+    router.push({ name: 'CreateProfile' })
+  } else if (window.location.href.includes('Profiles')) {
+    router.push({ name: 'Profiles' })
+  } else {
+    router.push({ name: 'Account' })
+  }
   // NOTE if there is something you want to do once the user is authenticated, place that here
 })
