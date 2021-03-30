@@ -6,7 +6,7 @@ const UserProfile = new Schema(
     petName: { type: String, required: true },
     img: { type: String, required: true },
     bio: { type: String, required: true },
-    size: { type: Number, required: true },
+    size: { type: String, required: true },
     sex: { type: String, required: true },
     fixed: { type: String, required: true },
     energy: { type: String, required: true },
