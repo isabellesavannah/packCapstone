@@ -3,7 +3,7 @@ import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
 
 export default class ChatsService {
-  async getAllChatsById(id){
+  async getAllChatsById(id) {
     try {
       const res = await api.get('api/userprofile/' + id + '/chats')
       AppState.chats[id] = res.data
@@ -11,10 +11,11 @@ export default class ChatsService {
       logger.error(error)
     }
   }
+
   async createChat(newChat) {
     try {
       const res = await api.post('api/chats', newChat)
-      AppState.chats[newChat.userProfileId].push.(res.data)
+      // AppState.chats[newChat.userProfileId].push.(res.data)
       return res.data._id
     } catch (error) {
       logger.error(error)
