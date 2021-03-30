@@ -1,7 +1,7 @@
 <template>
-  <div class="createProfile flex-grow-1 d-flex justify-content-center">
+  <div class="createProfile flex-grow-1 d-flex">
     <div class="container">
-      <div class="col-12 justify-content-center">
+      <div class="col-12">
         <div class="row d-flex justify-content-center">
           <form class="form-inline card" style="width: 40rem" @submit.prevent="createProfile">
             <input
@@ -13,6 +13,7 @@
               aria-describedby="helpId"
               v-model="state.newProfile.petName"
             />
+            <br>
             <input
               type="img"
               name="img"
@@ -22,6 +23,7 @@
               aria-describedby="helpId"
               v-model="state.newProfile.img"
             />
+            <br>
             <textarea
               type="text"
               name="bio"
@@ -32,6 +34,7 @@
               aria-describedby="helpId"
               v-model="state.newProfile.bio"
             ></textarea>
+            <br>
             <div class="form-group">
               <label for="size">Dog's Weight</label>
               <select class="form-control" id="size" v-model="state.newProfile.size" placeholder="lbs">
@@ -41,6 +44,7 @@
                 <option>65+</option>
               </select>
             </div>
+            <br>
             <div class="form-group">
               <label for="fixed">Is your dog neutered?</label>
               <select class="form-control" id="fixed" v-model="state.newProfile.fixed">
@@ -48,6 +52,7 @@
                 <option>No</option>
               </select>
             </div>
+            <br>
             <div class="form-group">
               <label for="sex">Your dog's sex</label>
               <select class="form-control" id="sex" v-model="state.newProfile.sex">
@@ -55,6 +60,7 @@
                 <option>Male</option>
               </select>
             </div>
+            <br>
             <div class="form-group">
               <label for="energy">What is your dog's energy?</label>
               <select class="form-control" id="energy" v-model="state.newProfile.energy">
@@ -63,6 +69,7 @@
                 <option>Low Energy</option>
               </select>
             </div>
+            <br>
             <button class="btn btn-secondary" type="submit">
               Create Profile
             </button>
