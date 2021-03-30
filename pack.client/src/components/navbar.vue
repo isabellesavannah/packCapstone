@@ -1,12 +1,8 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img
-          alt="logo"
-          src="../assets/img/cw-logo.png"
-          height="45"
-        />
+        <span><img src="Chasin.jpg" width="90" height="90"></span>
       </div>
     </router-link>
     <button
@@ -23,13 +19,12 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <router-link :to="{ name: 'Home' }" class="nav-link">
-            Home
-          </router-link>
-        </li>
-        <li class="nav-item">
-          <router-link :to="{ name: 'About' }" class="nav-link">
-            About
+          <router-link :to="{ name: 'Profiles' }" class="nav-link">
+            <p class="nav-text">
+              <strong>
+                Other Dogs <br> Profiles
+              </strong>
+            </p>
           </router-link>
         </li>
       </ul>
@@ -103,6 +98,9 @@ export default {
 </script>
 
 <style scoped>
+.navbar{
+  background: black;
+}
 .dropdown-menu {
   user-select: none;
   display: block;
@@ -123,5 +121,14 @@ a:hover {
 }
 .nav-item .nav-link.router-link-exact-active{
   color: var(--primary);
+}
+.nav-text{
+  color:aqua;
+  font-family: 'Neucha', cursive;
+}
+.nav-text:hover{
+  transition: .5s;
+  color:rgb(194, 68, 188);
+  text-shadow: palevioletred;
 }
 </style>
