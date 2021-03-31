@@ -3,8 +3,8 @@
     <div class="row background1 d-flex justify-content-center">
       <div class="col-12">
         <!-- start modal -->
-        <button type="button" class="position-absolute btn btn-demo text-light" style="top: 3%; left: 3%" data-toggle="modal" data-target="#myModal">
-          <i class="fas fa-dog fa-2x"></i> <i class="fas fa-search"></i>
+        <button type="button" class="position-absolute btn btn-dark text-light" style="top: 3%; left: 3%" data-toggle="modal" data-target="#myModal">
+          <i class="icon fas fa-dog fa-lg"><i class="fas fa-search"></i></i>
         </button>
         <!-- modal pop up -->
         <div class="modal left fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -45,7 +45,7 @@
     <!-- start profiles -->
     <div class="row">
       <div class="col-12">
-        <h1>Dog Profiles go Here =></h1>
+        <h1>Dog Profiles go Here</h1>
       </div>
     </div>
     <!-- end profiles -->
@@ -53,11 +53,18 @@
 </template>
 
 <script>
+import { reactive } from '@vue/reactivity'
+import { computed } from '@vue/runtime-core'
+import { AppState } from '../AppState'
 const url = require('../assets/C-Video.mp4')
 export default {
   name: 'ProfilesPage',
   setup() {
+    const state = reactive({
+      user: computed(() => AppState.user)
+    })
     return {
+      state,
       url
     }
   },
@@ -122,5 +129,9 @@ border: none;
 .modal-header {
 border-bottom-color: #EEEEEE;
 background-color: #FAFAFA;
+}
+
+.icon{
+  color:rgb(107, 104, 104)
 }
 </style>
