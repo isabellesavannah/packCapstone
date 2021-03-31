@@ -24,6 +24,7 @@ export default class InviteService {
     try {
       const res = await api.post('api/invites', newInvite)
       AppState.invites.push(res.data)
+      console.log(res.data)
       return res.data._id
     } catch (error) {
       logger.error(error)

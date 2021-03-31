@@ -20,5 +20,10 @@ class InvitationService {
     await dbContext.Invitation.findByIdAndDelete(id)
     return id
   }
+
+  async acceptInvitation(id) {
+    const invitation = await dbContext.Invitation.findOneAndUpdate({ id: id }, { accepted: true })
+    return invitation
+  }
 }
 export const invitationService = new InvitationService()
