@@ -11,6 +11,7 @@ export default class InvitationController extends BaseController {
       .get('', this.getAll)
       .post('', this.create)
       .delete('/:id', this.delete)
+      .put('/:id', this.edit)
   }
 
   async getAll(req, res, next) {
@@ -33,6 +34,14 @@ export default class InvitationController extends BaseController {
   async delete(req, res, next) {
     try {
       res.send(await invitationService.deleteInvitation(req.params.id))
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async edit(req, res, next) {
+    try {
+      res.send(await invitationService.acceptInvitation(req.params.id))
     } catch (error) {
       next(error)
     }
