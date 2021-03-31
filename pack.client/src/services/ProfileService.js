@@ -15,6 +15,7 @@ export default class ProfileService {
     try {
       const res = await api.get('api/userprofile/' + id)
       AppState.activeProfile = res.data
+      console.log(AppState.invitations)
     } catch (error) {
       logger.error(error)
     }

@@ -6,7 +6,7 @@
         <h5 class="card-title text-center">
           {{ profileProp.petName }}
         </h5>
-        <button class="btn btn-danger">
+        <button class="btn btn-danger" @click="deleteInvitation">
           Decline
         </button> <button class="btn btn-success">
           Accept
@@ -17,18 +17,27 @@
 </template>
 
 <script>
-// import { reactive } from '@vue/reactivity'
-// import { computed } from '@vue/runtime-core'
+import { AppState } from '../AppState'
+import { reactive } from '@vue/reactivity'
+import { computed } from '@vue/runtime-core'
+import { invitationService } from '../services/InvitationService'
 export default {
   name: 'Invitation',
   props: {
-    profileProp: { type: Object, required: true }
+    profileProp: { type: Object, required: true },
+    invitationProp: { type: Object, required: true }
   },
-  setup() {
-    // const state = reactive({
-    //   invites: computed
-    // })
-    return {}
+  setup(props) {
+    const state = reactive({
+      invitations: computed(() => AppState.invitations),
+      profileProp: computed(() => AppState.activeProfile)
+    })
+    return {
+      state,
+      deleteInvitation() {
+        invitationService.delete(props.invitationProp.id)
+      }
+    }
   },
   components: {}
 }

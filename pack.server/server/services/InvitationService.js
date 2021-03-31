@@ -11,7 +11,7 @@ class InvitationService {
     return invitation
   }
 
-  async getAll(query) {
+  async getAll(query = {}) {
     const invitations = await dbContext.Invitation.find(query)
     return invitations
   }

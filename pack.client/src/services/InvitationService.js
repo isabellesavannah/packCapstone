@@ -13,7 +13,7 @@ export default class InvitationService {
 
   async getInvitationById(id) {
     try {
-      const res = await api.get('api/UserProfile/' + id + '/invitations/')
+      const res = await api.get('api/UserProfile/' + id + '/invitations')
       AppState.invitations = res.data
     } catch (error) {
       logger.error(error)

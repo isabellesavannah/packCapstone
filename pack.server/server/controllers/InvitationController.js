@@ -8,13 +8,13 @@ export default class InvitationController extends BaseController {
     super('api/invitations')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
-      .get('', this.getAll)
+      .get('', this.find)
       .post('', this.create)
       .delete('/:id', this.delete)
       .put('/:id', this.edit)
   }
 
-  async getAll(req, res, next) {
+  async find(req, res, next) {
     try {
       return res.send(await invitationService.getAll(req.query))
     } catch (error) {
