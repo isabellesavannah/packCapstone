@@ -44,9 +44,9 @@
     </div>
     <!-- start profiles -->
     <div class="row">
-      <div class="col-12">
-        <ProfilesComponent v-for="profile in state.profiles" :key="profile.id" :profile-prop="profile" />
-      </div>
+      <!-- <div class="col"> -->
+      <ProfilesComponent v-for="profile in state.profiles" :key="profile.id" :profile-prop="profile" />
+    <!-- </div> -->
     </div>
     <!-- end profiles -->
   </div>
