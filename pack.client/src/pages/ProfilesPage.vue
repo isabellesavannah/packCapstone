@@ -45,7 +45,7 @@
     <!-- start profiles -->
     <div class="row">
       <div class="col-12">
-        <h1>Dog Profiles go Here</h1>
+        <ProfilesComponent v-for="profile in state.profiles" :key="profile.id" :profile-prop="profile" />
       </div>
     </div>
     <!-- end profiles -->
@@ -56,19 +56,22 @@
 import { reactive } from '@vue/reactivity'
 import { computed } from '@vue/runtime-core'
 import { AppState } from '../AppState'
+// import ProfileComponent from '../components/ProfileComponent.vue'
+// import ProfileService from '../services/ProfileService'
 const url = require('../assets/C-Video.mp4')
 export default {
   name: 'ProfilesPage',
   setup() {
     const state = reactive({
-      user: computed(() => AppState.user)
+      profiles: computed(() => AppState.profiles)
     })
+    // onMounted(() => ProfileService.getAll())
     return {
       state,
       url
     }
-  },
-  components: {}
+  }
+  // components: { ProfileComponent }
 }
 </script>
 
@@ -132,6 +135,6 @@ background-color: #FAFAFA;
 }
 
 .icon{
-  color:rgb(107, 104, 104)
+  color:rgb(107, 104, 104);
 }
 </style>
