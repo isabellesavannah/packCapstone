@@ -1,7 +1,9 @@
 <template>
   <div class="container-fluid demo background1">
     <div class="card transparent about text-center justify-content-center">
-      <img class="card-img-top" :src="activeProfile.img" alt="" />
+      <div class="row">
+        <img class="card-img-top" :src="activeProfile.img" alt="" />
+      </div>
       <h1>{{ activeProfile.petName }}</h1>
       <p>{{ activeProfile.bio }}</p>
     </div>
