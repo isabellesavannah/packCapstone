@@ -65,7 +65,7 @@
       </div><!-- container -->
       <!-- end modal -->
       <!-- start video -->
-      <video class="video" autoplay>
+      <video class="video" id="main-video" muted>
         <source
           :src="url"
           type="video/mp4"
@@ -96,7 +96,10 @@ export default {
       filteredProfiles: computed(() => AppState.profiles),
       filterOptions: {}
     })
-    onMounted(() => profileService.getAll())
+    onMounted(() => {
+      profileService.getAll()
+      document.getElementById('main-video').play()
+    })
     return {
       state,
       url,
