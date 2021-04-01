@@ -1,7 +1,7 @@
 <template>
-  <div class="profilesComponent col-4">
-    <div class="card m-2" style="width: 18rem;">
-      <img class="card-img-top pic" :src="profileProp.img">
+  <div class="profilesComponent col-4 d-flex justify-content-center">
+    <div class="card m-5 transparent" style="width: 18rem;">
+      <img class="card-img-top pic" :src="profileProp.img" alt="">
       <div class="card-body">
         <h5 class="card-title text-center">
           {{ profileProp.petName }}
@@ -34,11 +34,25 @@ export default {
 .pic{
   display: inline-block;
   padding: 8px;
-  background: linear-gradient(130deg, #74b9ff, #e66767);
+  background: linear-gradient(130deg, #aa50e2, #ffa10a);
   object-fit: cover;
   margin: auto;
   border-radius: 50%;
-  width: 200px;
-  height:200px;
+  width: 150px;
+  height:150px;
+}
+.transparent{
+   background-color: rgba(255, 255, 255, 0.438);
+}
+
+.card{
+  box-shadow: 2px 6px 8px 2px #aa50e2;
+  transition: 0.3s ease-in-out;
+  width: 65%;
+  height: 85%;
+}
+
+.card:hover{
+   box-shadow: 2px 8px 16px 2px aqua;
 }
 </style>

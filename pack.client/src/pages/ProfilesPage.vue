@@ -3,9 +3,11 @@
     <div class="row background1 d-flex justify-content-center">
       <div class="col-12">
         <!-- start modal -->
-        <button type="button" class="position-absolute btn btn-dark text-light" style="top: 3%; left: 3%" data-toggle="modal" data-target="#myModal">
-          <i class="icon fas fa-dog fa-lg"><i class="fas fa-search"></i></i>
-        </button>
+        <div>
+          <button type="button" class="btn btn-dark text-light" data-toggle="modal" data-target="#myModal">
+            <i class="icon fas fa-dog fa-lg"><i class="fas fa-search"></i></i>
+          </button>
+        </div>
         <!-- modal pop up -->
         <div class="modal left fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
@@ -43,7 +45,7 @@
       <!-- end video -->
     </div>
     <!-- start profiles -->
-    <div class="row">
+    <div class="row background1">
       <!-- <div class="col"> -->
       <ProfilesComponent v-for="profile in state.profiles" :key="profile.id" :profile-prop="profile" />
     <!-- </div> -->
@@ -92,7 +94,7 @@ export default {
 *******************************/
 .modal.left .modal-dialog {
 margin: auto;
-width: -250px;
+width: -150px;
 height: 100%;
 -webkit-transform: translate3d(0%, 0, 0);
     -ms-transform: translate3d(0%, 0, 0);
@@ -106,13 +108,9 @@ width: 40%;
 overflow-y: auto;
 }
 
-/* .modal.left .modal-body {
-padding: 15px 15px 80px;
-} */
-
 /*Left*/
 .modal.left.fade .modal-dialog{
-left: -250px;
+left: -465px;
 -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
   -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
     -o-transition: opacity 0.3s linear, left 0.3s ease-out;
@@ -137,4 +135,12 @@ background-color: #FAFAFA;
 .icon{
   color:rgb(107, 104, 104);
 }
+
+/* sticky button */
+div.sticky{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
 </style>

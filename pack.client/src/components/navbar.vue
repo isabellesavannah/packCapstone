@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <span><img src="Chasin.jpg" width="90" height="90"></span>
+        <img src="../assets/Cimg.png" width="90" height="90">
       </div>
     </router-link>
     <button
