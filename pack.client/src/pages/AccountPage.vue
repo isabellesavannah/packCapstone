@@ -1,8 +1,8 @@
 <template>
-  <div class="container demo">
-    <div class="card about text-center">
+  <div class="container-fluid demo background1">
+    <div class="card transparent about text-center justify-content-center">
       <h1>{{ activeProfile.petName }}</h1>
-      <img class="rounded" :src="activeProfile.img" alt="" />
+      <img class="d-flex" style="width: 100%" :src="activeProfile.img" alt="" />
       <p>{{ activeProfile.bio }}</p>
     </div>
 
@@ -59,6 +59,33 @@ export default {
 </script>
 
 <style scoped>
+.background1{
+  background-color: black;
+}
+.pic{
+  display: inline-block;
+  padding: 8px;
+  background: linear-gradient(130deg, #aa50e2, #ffa10a);
+  object-fit: cover;
+  margin: auto;
+  border-radius: 50%;
+  width: 150px;
+  height:150px;
+}
+.transparent{
+   background-color: rgba(255, 255, 255, 0.438);
+}
+
+.card{
+  box-shadow: 2px 6px 8px 2px #aa50e2;
+  transition: 0.3s ease-in-out;
+  width: 65%;
+  height: 85%;
+}
+
+.card:hover{
+   box-shadow: 2px 8px 16px 2px aqua;
+}
 
 .modal.right .modal-dialog {
 position: fixed;
