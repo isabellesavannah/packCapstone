@@ -83,20 +83,20 @@
 
 <script>
 import { reactive } from '@vue/reactivity'
-import { computed } from '@vue/runtime-core'
+import { computed, onMounted } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 // import ProfileComponent from '../components/ProfileComponent.vue'
-// import ProfileService from '../services/ProfileService'
+import { profileService } from '../services/ProfileService'
 const url = require('../assets/C-Video.mp4')
 export default {
   name: 'ProfilesPage',
   setup() {
     const state = reactive({
       profiles: computed(() => AppState.profiles),
-      filteredProfiles: AppState.profiles,
+      filteredProfiles: computed(() => AppState.profiles),
       filterOptions: {}
     })
-    // onMounted(() => ProfileService.getAll())
+    onMounted(() => profileService.getAll())
     return {
       state,
       url,
