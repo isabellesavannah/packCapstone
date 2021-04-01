@@ -25,7 +25,7 @@
 
           <div class="modal-body">
             <span v-if="state.invitations.length">
-              <Invitation v-for="invitation in state.invitations" :key="invitation._id" :invitation-prop="invitation" />
+              <Invitation v-for="invitation in state.filteredInvitations" :key="invitation._id" :invitation-prop="invitation" />
             </span>
           </div>
         </div><!-- modal-content -->
@@ -44,7 +44,8 @@ export default {
   name: 'Account',
   setup() {
     const state = reactive({
-      invitations: computed(() => AppState.invitations)
+      invitations: computed(() => AppState.invitations),
+      filteredInvitations: computed(() => AppState.invitations.filter(i => !i.accepted))
     })
     const route = useRoute()
     onMounted(() => profileService.getProfileById(route.params.id))
