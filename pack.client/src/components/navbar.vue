@@ -55,7 +55,7 @@
             :class="{ show: state.dropOpen }"
             @click="state.dropOpen = false"
           >
-            <router-link :to="{ name: 'Account', params:{id:account.id} }" v-if="account.id">
+            <router-link :to="{ name: 'Account', params:{id:state.profile.id} }" v-if="state.profile.id">
               <div class="list-group-item list-group-item-action hoverable">
                 Account
               </div>
@@ -81,7 +81,8 @@ export default {
   name: 'Navbar',
   setup() {
     const state = reactive({
-      dropOpen: false
+      dropOpen: false,
+      profile: computed(() => AppState.activeProfile)
     })
     return {
       state,
