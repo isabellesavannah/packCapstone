@@ -1,18 +1,18 @@
 <template>
   <div class="container-fluid">
     <div class="row background1 d-flex justify-content-center">
-      <div class="col-12">
+      <div class="col-12 stuff">
         <!-- start modal -->
-        <div>
+        <div class="mt-3">
           <button type="button" class="btn btn-dark text-light" data-toggle="modal" data-target="#myModal">
             <i class="icon fas fa-dog fa-lg"><i class="fas fa-search"></i></i>
           </button>
         </div>
         <!-- modal pop up -->
-        <div class="modal left fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal left fade form-text" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
-              <div class="modal-header">
+              <div class="modal-header fetch">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span class="text-danger mr-1" aria-hidden="true">&times;</span>
                 </button>
@@ -21,11 +21,11 @@
                 </h4>
               </div>
 
-              <div class="modal-body form card">
+              <div class="modal-body form card fetch m-2 stuff">
                 <form class="form card" @submit.prevent="filterProfiles">
                   <div class="form-group">
                     <label for="size">Dog's Weight</label>
-                    <select class="form-control m-2" id="size" v-model="state.filterOptions.size" placeholder="lbs">
+                    <select class="form-control" id="size" v-model="state.filterOptions.size" placeholder="lbs">
                       <option>5-20</option>
                       <option>20-45</option>
                       <option>45-65</option>
@@ -33,27 +33,27 @@
                     </select>
                     <div class="form-group">
                       <label for="fixed">Is your dog neutered?</label>
-                      <select class="form-control m-2" id="fixed" v-model="state.filterOptions.fixed">
+                      <select class="form-control" id="fixed" v-model="state.filterOptions.fixed">
                         <option>Yes</option>
                         <option>No</option>
                       </select>
                     </div>
                     <div class="form-group">
                       <label for="sex">Your dog's sex</label>
-                      <select class="form-control m-2" id="sex" v-model="state.filterOptions.sex">
+                      <select class="form-control" id="sex" v-model="state.filterOptions.sex">
                         <option>Female</option>
                         <option>Male</option>
                       </select>
                     </div>
                     <div class="form-group">
                       <label for="energy">What is your dog's energy?</label>
-                      <select class="form-control m-2" id="energy" v-model="state.filterOptions.energy">
+                      <select class="form-control" id="energy" v-model="state.filterOptions.energy">
                         <option>High Energy</option>
                         <option>Medium Energy</option>
                         <option>Low Energy</option>
                       </select>
                     </div>
-                    <button class="btn btn-secondary m-2" type="submit">
+                    <button class="btn btn-info f-button m-2" type="submit">
                       Go Fetch
                     </button>
                   </div>
@@ -106,7 +106,6 @@ export default {
         state.filteredProfiles = state.filteredProfiles.filter(profile => {
           for (const key in options) {
             const option = options[key]
-            debugger
             if (profile[key] !== option) {
               return false
             }
@@ -188,6 +187,26 @@ div.sticky{
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+}
+.fetch{
+background: linear-gradient(#aa50e2, #ffa10a);
+background-color: black;
+box-shadow: 0px, 6px, 8px, 0px black
+}
+
+.option:hover{
+  color:#aa50e2
+}
+
+.f-button{
+  color:white
+}
+.form-text{
+  color: black
+}
+
+.stuff{
+  color:black
 }
 
 </style>
