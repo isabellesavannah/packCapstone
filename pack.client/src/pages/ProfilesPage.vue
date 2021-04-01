@@ -21,14 +21,43 @@
                 </h4>
               </div>
 
-              <div class="modal-body">
-                <ul class="pb-2">
-                  <li>Filter by Item 1</li>
-                  <li>Filter by Item 2</li>
-                  <li>Filter by Item 3</li>
-                  <li>Filter by Item 4</li>
-                  <li>Filter by Item 5</li>
-                </ul>
+              <div class="modal-body form card">
+                <form class="form card" @submit.prevent="filterProfiles">
+                  <div class="form-group">
+                    <label for="size">Dog's Weight</label>
+                    <select class="form-control m-2" id="size" v-model="state.filterOptions.size" placeholder="lbs">
+                      <option>5-20</option>
+                      <option>20-45</option>
+                      <option>45-65</option>
+                      <option>65+</option>
+                    </select>
+                    <div class="form-group">
+                      <label for="fixed">Is your dog neutered?</label>
+                      <select class="form-control m-2" id="fixed" v-model="state.filterOptions.fixed">
+                        <option>Yes</option>
+                        <option>No</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="sex">Your dog's sex</label>
+                      <select class="form-control m-2" id="sex" v-model="state.filterOptions.sex">
+                        <option>Female</option>
+                        <option>Male</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="energy">What is your dog's energy?</label>
+                      <select class="form-control m-2" id="energy" v-model="state.filterOptions.energy">
+                        <option>High Energy</option>
+                        <option>Medium Energy</option>
+                        <option>Low Energy</option>
+                      </select>
+                    </div>
+                    <button class="btn btn-secondary m-2" type="submit">
+                      Go Fetch
+                    </button>
+                  </div>
+                </form>
               </div>
             </div><!-- modal-content -->
           </div><!-- modal-dialog -->
@@ -46,7 +75,7 @@
     </div>
     <!-- start profiles -->
     <div class="row background1">
-      <ProfilesComponent v-for="profile in state.profiles" :key="profile.id" :profile-prop="profile" />
+      <ProfilesComponent v-for="profile in state.filteredProfiles" :key="profile.id" :profile-prop="profile" />
     </div>
     <!-- end profiles -->
   </div>
@@ -77,6 +106,7 @@ export default {
         state.filteredProfiles = state.filteredProfiles.filter(profile => {
           for (const key in options) {
             const option = options[key]
+            debugger
             if (profile[key] !== option) {
               return false
             }
@@ -117,7 +147,7 @@ height: 100%;
 
 .modal.left .modal-content {
 height: 100%;
-width: 40%;
+width: 20em;
 overflow-y: auto;
 }
 

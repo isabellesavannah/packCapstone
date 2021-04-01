@@ -32,6 +32,7 @@ import $ from 'jquery'
 
 export default {
   name: 'Chat',
+
   setup() {
     const state = reactive({
       newChat: {},
