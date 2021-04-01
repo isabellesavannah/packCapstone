@@ -1,14 +1,14 @@
 <template>
   <div class="Invitation">
-    <div class="card col-4 m-2" style="width: 18rem;">
-      <img class="card-img-top" :src="profileProp.img">
+    <div class="card m-2 d-flex justify-content-center" style="width 100%">
+      <!-- <img class="card-img-top" :src="userProfile.img"> -->
       <div class="card-body">
         <h5 class="card-title text-center">
-          {{ profileProp.petName }}
+          {{ invitationProp.inviteId.creator.petName }}
         </h5>
         <button class="btn btn-danger" @click="deleteInvitation">
           Decline
-        </button> <button class="btn btn-success">
+        </button> <button class="btn btn-success" @click="acceptInvitation">
           Accept
         </button>
       </div>
@@ -24,18 +24,20 @@ import { invitationService } from '../services/InvitationService'
 export default {
   name: 'Invitation',
   props: {
-    profileProp: { type: Object, required: true },
     invitationProp: { type: Object, required: true }
   },
   setup(props) {
     const state = reactive({
       invitations: computed(() => AppState.invitations),
-      profileProp: computed(() => AppState.activeProfile)
+      userProfile: computed(() => AppState.activeProfile)
     })
     return {
       state,
-      deleteInvitation() {
-        invitationService.delete(props.invitationProp.id)
+      async deleteInvitation() {
+        await invitationService.delete(props.invitationProp.id, state.userProfile.id)
+      },
+      async  acceptInvitation() {
+        await invitationService.acceptInvitation(props.invitationProp.id, state.userProfile.id)
       }
     }
   },

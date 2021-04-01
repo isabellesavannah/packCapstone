@@ -24,8 +24,8 @@
           </div>
 
           <div class="modal-body">
-            <span v-if="!invitation">
-              <Invitation v-for="invitation in state.invitations" :key="invitation._id" :invitation="invitation" />
+            <span v-if="state.invitations.length">
+              <Invitation v-for="invitation in state.invitations" :key="invitation._id" :invitation-prop="invitation" />
             </span>
           </div>
         </div><!-- modal-content -->

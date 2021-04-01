@@ -12,8 +12,8 @@ const Invite = new Schema(
 )
 Invite.virtual('creator', {
   localField: 'creatorId',
-  ref: 'Account',
-  foreignField: '_id',
+  ref: 'UserProfile',
+  foreignField: 'creatorId',
   justOne: true
 })
 export default Invite

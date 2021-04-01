@@ -2,7 +2,10 @@ import { dbContext } from '../db/DbContext'
 
 class InvitationService {
   async getMyInvitations(id) {
-    const invitations = await dbContext.Invitation.find({ profileId: id })
+    const invitations = await dbContext.Invitation.find({ profileId: id }).populate({
+      path: 'inviteId',
+      populate: { path: 'creator' }
+    })
     return invitations
   }
 
@@ -22,7 +25,10 @@ class InvitationService {
   }
 
   async acceptInvitation(id) {
-    const invitation = await dbContext.Invitation.findOneAndUpdate({ id: id }, { accepted: true })
+    const invitation = await dbContext.Invitation.findOneAndUpdate({ _id: id }, { accepted: true })
+    if (!invitation) {
+      throw new Error('That invitation does not exist')
+    }
     return invitation
   }
 }
