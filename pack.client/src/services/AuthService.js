@@ -5,7 +5,7 @@ import router from '../router'
 import { setBearer } from './AxiosService'
 import { accountService } from './AccountService'
 import { socketService } from './SocketService'
-// import { profileService } from './ProfileService'
+import { profileService } from './ProfileService'
 
 export const AuthService = initialize({
   domain,
@@ -20,14 +20,14 @@ export const AuthService = initialize({
   }
 })
 
-AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function() {
+AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function () {
   setBearer(AuthService.bearer)
   AppState.user = AuthService.user
   await accountService.getAccount()
   // chatService.getChat() NOTE add in once service created
   socketService.authenticate(AuthService.bearer)
 
-  // await profileService.getAll()
+  await profileService.getAll()
   // AppState.profiles.forEach((p, i) => {
   //   console.log(AppState)
   //   debugger
