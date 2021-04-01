@@ -2,11 +2,11 @@
   <div class="container-fluid demo background1">
     <div class="card transparent about text-center justify-content-center">
       <h1>{{ activeProfile.petName }}</h1>
-      <img class="d-flex" style="width: 100%" :src="activeProfile.img" alt="" />
+      <img class="card-img-top" style="width: 100%" :src="activeProfile.img" alt="" />
       <p>{{ activeProfile.bio }}</p>
     </div>
 
-    <button type="button" class="position-absolute btn btn-demo" style="top: 20%; right: 3%" data-toggle="modal" data-target="#myModal2">
+    <button type="button" class="position-absolute btn btn-demo text-light" style="top: 20%; right: 3%" data-toggle="modal" data-target="#myModal2">
       Invites
     </button>
 
@@ -19,7 +19,6 @@
               <span aria-hidden="true">&times;</span>
             </button>
             <h4 class="modal-title" id="myModalLabel2">
-              Right Sidebar
             </h4>
           </div>
 
