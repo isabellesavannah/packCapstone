@@ -74,7 +74,7 @@
       <!-- end video -->
     </div>
     <!-- start profiles -->
-    <div class="row background1">
+    <div class="row background1 justify-content-center">
       <ProfilesComponent v-for="profile in state.filteredProfiles" :key="profile.id" :profile-prop="profile" />
     </div>
     <!-- end profiles -->
