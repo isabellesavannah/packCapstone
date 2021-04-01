@@ -46,9 +46,7 @@
     </div>
     <!-- start profiles -->
     <div class="row background1">
-      <!-- <div class="col"> -->
       <ProfilesComponent v-for="profile in state.profiles" :key="profile.id" :profile-prop="profile" />
-    <!-- </div> -->
     </div>
     <!-- end profiles -->
   </div>
@@ -65,15 +63,30 @@ export default {
   name: 'ProfilesPage',
   setup() {
     const state = reactive({
-      profiles: computed(() => AppState.profiles)
+      profiles: computed(() => AppState.profiles),
+      filteredProfiles: AppState.profiles,
+      filterOptions: {}
     })
     // onMounted(() => ProfileService.getAll())
     return {
       state,
-      url
+      url,
+      filterProfiles() {
+        state.filteredProfiles = state.profiles
+        const options = state.filterOptions
+        state.filteredProfiles = state.filteredProfiles.filter(profile => {
+          for (const key in options) {
+            const option = options[key]
+            if (profile[key] !== option) {
+              return false
+            }
+          }
+          return true
+        })
+        state.filterOptions = {}
+      }
     }
   }
-  // components: { ProfileComponent }
 }
 </script>
 
@@ -107,6 +120,10 @@ height: 100%;
 width: 40%;
 overflow-y: auto;
 }
+
+/* .modal.left .modal-body {
+padding: 15px 15px 80px;
+} */
 
 /*Left*/
 .modal.left.fade .modal-dialog{
