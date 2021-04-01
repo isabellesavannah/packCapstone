@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid demo background1">
-    <div class="card transparent about text-center justify-content-center">
+    <div class="card transparent about text-center justify-content-center mx-auto" style="max-width:30rem ">
       <img class="card-img-top" :src="activeProfile.img" alt="" />
 
       <h1>{{ activeProfile.petName }}</h1>
@@ -154,7 +154,8 @@ background-color:deeppink;
 outline: 0;
 }
 img {
-  max-width:100%;
+  max-width:30rem;
   max-height: 77%;
+  object-fit: cover;
 }
 </style>
