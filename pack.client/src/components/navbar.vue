@@ -100,7 +100,8 @@ export default {
 
 <style scoped>
 .navbar{
-  background: black;
+  background: rgba(10, 10, 10, 0.979);
+  box-shadow: 2px 6px 8px 2px aqua;
 }
 .dropdown-menu {
   user-select: none;
