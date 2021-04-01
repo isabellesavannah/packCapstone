@@ -11,9 +11,9 @@ export default class InvitationService {
     }
   }
 
-  async acceptInvitation(id, profileId, acceptedInvitation) {
+  async acceptInvitation(id, profileId) {
     try {
-      await api.put('api/invitations/' + id, acceptedInvitation)
+      await api.put('api/invitations/' + id)
       this.getInvitationById(profileId)
     } catch (error) {
       logger.error(error)

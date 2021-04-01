@@ -33,11 +33,11 @@ export default {
     })
     return {
       state,
-      deleteInvitation() {
-        invitationService.delete(props.invitationProp.id, state.userProfile.id)
+      async deleteInvitation() {
+        await invitationService.delete(props.invitationProp.id, state.userProfile.id)
       },
-      acceptInvitation() {
-        invitationService.acceptInvitation(props.invitationProp.id, state.userProfile.id, props.invitationProp)
+      async  acceptInvitation() {
+        await invitationService.acceptInvitation(props.invitationProp.id, state.userProfile.id)
       }
     }
   },

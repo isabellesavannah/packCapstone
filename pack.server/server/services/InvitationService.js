@@ -25,7 +25,10 @@ class InvitationService {
   }
 
   async acceptInvitation(id) {
-    const invitation = await dbContext.Invitation.findOneAndUpdate({ id: id }, { accepted: true })
+    const invitation = await dbContext.Invitation.findOneAndUpdate({ _id: id }, { accepted: true })
+    if (!invitation) {
+      throw new Error('That invitation does not exist')
+    }
     return invitation
   }
 }
