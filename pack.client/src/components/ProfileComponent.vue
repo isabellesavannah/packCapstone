@@ -6,12 +6,12 @@
     <span></span>
     <img class="card-img-top pic" :src="profileProp.img" alt="">
     <div class="card-body">
-      <h5 class="card-title text-center">
+      <h5 class="text-shadow card-title text-center text-dark">
         {{ profileProp.petName }}
         <hr>
         {{ profileProp.sex }}
       </h5>
-      <p class="card-text text-center">
+      <p class="text-shadow card-text text-center text-dark">
         {{ profileProp.bio }}
       </p>
     </div>
@@ -65,10 +65,11 @@ export default {
 }
 
 .border-wrap:hover{
-  color: #255784;
-  background: #2196f3;
-  box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
+  color: #aa50e2;
+  background: rgba(121, 252, 252, 0.76);
+  box-shadow: 0 0 10px #aa50e2, 0 0 40px #aa50e2, 0 0 80px #aa50e2;
   transition-delay: 1s;
+
 }
 .border-wrap span{
   position: absolute;
@@ -79,7 +80,7 @@ export default {
   left: -100%;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg,transparent,#2196f3);
+  background: linear-gradient(90deg,transparent,#aa50e2);
 }
 .border-wrap:hover span:nth-child(1){
   left: 100%;
@@ -90,7 +91,7 @@ export default {
   right: -100%;
   width: 100%;
   height: 2px;
-  background: linear-gradient(270deg,transparent,#2196f3);
+  background: linear-gradient(270deg,transparent,#aa50e2);
 }
 .border-wrap:hover span:nth-child(3){
   right: 100%;
@@ -103,7 +104,7 @@ export default {
   right: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(180deg,transparent,#2196f3);
+  background: linear-gradient(180deg,transparent,#aa50e2);
 }
 .border-wrap:hover span:nth-child(2){
   top: 100%;
@@ -115,11 +116,15 @@ export default {
   left: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(360deg,transparent,#2196f3);
+  background: linear-gradient(360deg,transparent,#aa50e2);
 }
 .border-wrap:hover span:nth-child(4){
   bottom: 100%;
   transition: 1s;
   transition-delay: 0.75s;
+}
+
+.text-shadow{
+  text-shadow: 2px 2px, #aa50e2;
 }
 </style>
