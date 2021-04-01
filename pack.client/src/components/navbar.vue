@@ -6,7 +6,7 @@
       </div>
     </router-link>
     <button
-      class="navbar-toggler"
+      class="navbar-toggler btn btn-light"
       type="button"
       data-toggle="collapse"
       data-target="#navbarText"
@@ -14,7 +14,7 @@
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
-      <span class="navbar-toggler-icon" />
+      <span class="navbar-toggler-icon btn" />
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
