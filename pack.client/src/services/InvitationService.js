@@ -11,6 +11,15 @@ export default class InvitationService {
     }
   }
 
+  async acceptInvitation(id, profileId, acceptedInvitation) {
+    try {
+      await api.put('api/invitations/' + id, acceptedInvitation)
+      this.getInvitationById(profileId)
+    } catch (error) {
+      logger.error(error)
+    }
+  }
+
   async getInvitationById(id) {
     try {
       const res = await api.get('api/UserProfile/' + id + '/invitations')
@@ -30,9 +39,10 @@ export default class InvitationService {
     }
   }
 
-  async deleteActiveInvitation(id) {
+  async delete(id, profileId) {
     try {
       await api.delete('api/invitations/' + id)
+      this.getInvitationById(profileId)
     } catch (error) {
       logger.error(error)
     }

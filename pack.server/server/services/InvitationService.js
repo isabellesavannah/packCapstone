@@ -2,7 +2,10 @@ import { dbContext } from '../db/DbContext'
 
 class InvitationService {
   async getMyInvitations(id) {
-    const invitations = await dbContext.Invitation.find({ profileId: id })
+    const invitations = await dbContext.Invitation.find({ profileId: id }).populate({
+      path: 'inviteId',
+      populate: { path: 'creator' }
+    })
     return invitations
   }
 
