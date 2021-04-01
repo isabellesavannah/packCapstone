@@ -1,6 +1,6 @@
 <template>
   <div class="container demo">
-    <div class="about text-center">
+    <div class="card about text-center">
       <h1>{{ activeProfile.petName }}</h1>
       <img class="rounded" :src="activeProfile.img" alt="" />
       <p>{{ activeProfile.bio }}</p>
