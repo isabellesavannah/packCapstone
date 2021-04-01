@@ -25,7 +25,7 @@ export default class ProfileService {
     try {
       const res = await api.post('api/userprofile', newProfile)
       AppState.profiles.push(res.data)
-      return res.data._id
+      return res.data
     } catch (error) {
       logger.error(error)
     }

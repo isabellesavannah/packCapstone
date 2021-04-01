@@ -88,8 +88,9 @@ export default {
       state,
       async createProfile() {
         try {
-          await profileService.createProfile(state.newProfile)
-          router.push('Account')
+          const createdProfile = await profileService.createProfile(state.newProfile)
+          state.newProfile = {}
+          router.push({ name: 'Account', params: { id: createdProfile._id } })
         } catch (error) {
           logger.error(error)
         }
