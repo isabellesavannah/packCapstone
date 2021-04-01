@@ -153,6 +153,7 @@ background-color:deeppink;
 outline: 0;
 }
 img {
-  max-width:fit-content;
+  max-width:100%;
+  max-height: 77%;
 }
 </style>
