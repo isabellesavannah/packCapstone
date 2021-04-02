@@ -86,7 +86,7 @@ import { reactive } from '@vue/reactivity'
 import { computed, onMounted } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 // import ProfileComponent from '../components/ProfileComponent.vue'
-import { profileService } from '../services/ProfileService'
+// import { profileService } from '../services/ProfileService'
 const url = require('../assets/C-Video.mp4')
 export default {
   name: 'ProfilesPage',
