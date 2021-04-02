@@ -4,10 +4,11 @@
       <div class="col-12 stuff">
         <!-- start modal -->
         <div class="mt-3">
-          <button type="button" class="btn btn-dark text-light" data-toggle="modal" data-target="#myModal">
-            <i class="icon fas fa-dog fa-lg"><i class="fas fa-search"></i></i>
-          </button> <button class="btn btn-dark" type="button" @click="resetFilters()">
-            Retrieve Dogs
+          <button type="button" class="btn btn-dark text-light border-wrap m-3" data-toggle="modal" data-target="#myModal">
+            <i class="icon fas fa-search"></i>
+          </button>
+          <button class="btn btn-dark text-light border-wrap m-3" type="button" @click="resetFilters()">
+            <i class="icon fas fa-dog fa-lg"></i>
           </button>
           <div>
           </div>
@@ -15,21 +16,25 @@
         <!-- modal pop up -->
         <div class="modal left fade form-text" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog " role="document">
-            <div class="modal-content">
+            <div class="modal-content ">
               <div class="modal-header fetch">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span class="text-dark mr-1" aria-hidden="true">&times;</span>
-                </button>
+                </button> -->
                 <h4 class="modal-title" id="myModalLabel">
-                  Go Fetch
+                  Find Your Pack
                 </h4>
               </div>
 
               <div class="modal-body form card fetch m-2 stuff">
-                <form class="form card" @submit.prevent="filterProfiles">
+                <form class="form card border-wrap " @submit.prevent="filterProfiles">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
                   <div class="form-group">
                     <label for="size">Dog's Weight</label>
-                    <select class="form-control" id="size" v-model="state.filterOptions.size" placeholder="lbs">
+                    <select class="form-control " id="size" v-model="state.filterOptions.size" placeholder="lbs">
                       <option>5-20</option>
                       <option>20-45</option>
                       <option>45-65</option>
@@ -57,7 +62,7 @@
                         <option>Low Energy</option>
                       </select>
                     </div>
-                    <button class="btn btn-info f-button m-2" type="submit">
+                    <button class="btn btn-dark text-light border-wrap m-3 close" type="submit" aria-label="Close">
                       Go Fetch
                     </button>
                   </div>
@@ -90,6 +95,7 @@ import { reactive } from '@vue/reactivity'
 import { computed, onMounted } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import { profileService } from '../services/ProfileService'
+import $ from 'jquery'
 // import { profileService } from '../services/ProfileService'
 const url = require('../assets/C-Video.mp4')
 export default {
@@ -120,6 +126,7 @@ export default {
           return true
         })
         state.filterOptions = {}
+        $('#myModal').modal('toggle')
       },
       resetFilters() {
         profileService.getAll()
@@ -158,6 +165,7 @@ height: 100%;
 height: 100%;
 width: 20em;
 overflow-y: auto;
+ font-family: 'Righteous', cursive;
 }
 
 /* .modal.left .modal-body {
@@ -202,7 +210,7 @@ div.sticky{
   top: 0;
 }
 .fetch{
-background: linear-gradient(#aa50e2, #ffa10a);
+background: linear-gradient(#aa50e2, #000000);
 background-color: black;
 box-shadow: 0px, 6px, 8px, 0px black
 }
@@ -222,4 +230,69 @@ box-shadow: 0px, 6px, 8px, 0px black
   color:black
 }
 
+.border-wrap{
+  text-decoration: none;
+  transition: 0.2s;
+  overflow: hidden;
+}
+
+.border-wrap:hover{
+  color: #aa50e2;
+  background: rgba(0, 255, 255, 0.63);
+  box-shadow: 0 0 10px aqua, 0 0 40px rgba(121, 252, 252, 0.76), 0 0 80px aqua;
+  transition-delay: 1s;
+
+}
+.border-wrap span{
+  position: absolute;
+  display: block;
+}
+.border-wrap span:nth-child(1){
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg,transparent,#aa50e2);
+}
+.border-wrap:hover span:nth-child(1){
+  left: 100%;
+  transition: 1s;
+}
+.border-wrap span:nth-child(3){
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg,transparent,#aa50e2);
+}
+.border-wrap:hover span:nth-child(3){
+  right: 100%;
+  transition: 1s;
+  transition-delay: 0.5s;
+
+}
+.border-wrap span:nth-child(2){
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg,transparent,#aa50e2);
+}
+.border-wrap:hover span:nth-child(2){
+  top: 100%;
+  transition: 1s;
+  transition-delay: 0.25s;
+}
+.border-wrap span:nth-child(4){
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg,transparent,#aa50e2);
+}
+.border-wrap:hover span:nth-child(4){
+  bottom: 100%;
+  transition: 1s;
+  transition-delay: 0.75s;
+}
 </style>
