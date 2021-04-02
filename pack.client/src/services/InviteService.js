@@ -4,7 +4,7 @@ import { logger } from '../utils/Logger'
 export default class InviteService {
   async getAll(id) {
     try {
-      const res = await api.get('api/invites/' + id)
+      const res = await api.get('api/UserProfile/' + id + '/invites')
       AppState.invites = res.data
     } catch (error) {
       logger.error(error)

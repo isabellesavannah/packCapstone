@@ -9,6 +9,7 @@
     <div class="bg-dark text-light text-center p-4">
       Chasin Tail LLC
     </div>
+    <CreateChatModal />
   </footer>
 </template>
 
