@@ -6,11 +6,10 @@
         <div class="mt-3">
           <button type="button" class="btn btn-dark text-light" data-toggle="modal" data-target="#myModal">
             <i class="icon fas fa-dog fa-lg"><i class="fas fa-search"></i></i>
+          </button> <button class="btn btn-dark" type="button" @click="resetFilters()">
+            Retrieve Dogs
           </button>
           <div>
-            <button class="btn btn-dark mt-2" type="button" @click="resetFilters()">
-              Retrieve Dogs
-            </button>
           </div>
         </div>
         <!-- modal pop up -->
@@ -37,21 +36,21 @@
                       <option>65+</option>
                     </select>
                     <div class="form-group">
-                      <label for="fixed">Is your dog neutered?</label>
+                      <label for="fixed">Is Your Dog Neutered?</label>
                       <select class="form-control" id="fixed" v-model="state.filterOptions.fixed">
                         <option>Yes</option>
                         <option>No</option>
                       </select>
                     </div>
                     <div class="form-group">
-                      <label for="sex">Your dog's sex</label>
+                      <label for="sex">Your Dog's Gender</label>
                       <select class="form-control" id="sex" v-model="state.filterOptions.sex">
                         <option>Female</option>
                         <option>Male</option>
                       </select>
                     </div>
                     <div class="form-group">
-                      <label for="energy">What is your dog's energy?</label>
+                      <label for="energy">What Is Your Dog's Energy?</label>
                       <select class="form-control" id="energy" v-model="state.filterOptions.energy">
                         <option>High Energy</option>
                         <option>Medium Energy</option>
