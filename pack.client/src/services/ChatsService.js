@@ -6,7 +6,7 @@ export default class ChatsService {
   async getAllChatsById(id) {
     try {
       const res = await api.get('api/invites/' + id + '/chat')
-      AppState.chats[id] = res.data
+      AppState.chats = res.data
     } catch (error) {
       logger.error(error)
     }
