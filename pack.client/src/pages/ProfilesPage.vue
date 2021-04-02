@@ -7,6 +7,11 @@
           <button type="button" class="btn btn-dark text-light" data-toggle="modal" data-target="#myModal">
             <i class="icon fas fa-dog fa-lg"><i class="fas fa-search"></i></i>
           </button>
+          <div>
+            <button class="btn btn-dark mt-2" type="submit" @submit.prevent="state.profiles">
+              Clear Filter
+            </button>
+          </div>
         </div>
         <!-- modal pop up -->
         <div class="modal left fade form-text" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -14,7 +19,7 @@
             <div class="modal-content">
               <div class="modal-header fetch">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span class="text-danger mr-1" aria-hidden="true">&times;</span>
+                  <span class="text-dark mr-1" aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="modal-title" id="myModalLabel">
                   Go Fetch
@@ -85,7 +90,6 @@
 import { reactive } from '@vue/reactivity'
 import { computed, onMounted } from '@vue/runtime-core'
 import { AppState } from '../AppState'
-// import ProfileComponent from '../components/ProfileComponent.vue'
 // import { profileService } from '../services/ProfileService'
 const url = require('../assets/C-Video.mp4')
 export default {
@@ -107,7 +111,6 @@ export default {
         state.filteredProfiles = state.profiles
         const options = state.filterOptions
         AppState.profiles = state.filteredProfiles.filter(profile => {
-          // debugger
           for (const key in options) {
             const option = options[key]
             if (profile[key] !== option) {
@@ -116,7 +119,6 @@ export default {
           }
           return true
         })
-        console.log(AppState.profiles)
         state.filterOptions = {}
       }
     }
