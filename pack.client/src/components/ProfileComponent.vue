@@ -1,19 +1,14 @@
 <template>
-  <div class="profilesComponent border-wrap col-3 m-4 ">
+  <div class="rounded profilesComponent border-wrap col-3 m-4 ">
     <span></span>
     <span></span>
     <span></span>
     <span></span>
-    <img class="card-img-top pic" :src="profileProp.img" alt="">
+    <h2 class="text-shadow card-title text-center text-light mt-4">
+      {{ profileProp.petName }}
+    </h2>
+    <img class="card-img-center mt-3 pic d-flex justify-content-center" :src="profileProp.img" alt="">
     <div class="card-body">
-      <h5 class="text-shadow card-title text-center text-dark">
-        {{ profileProp.petName }}
-        <hr>
-        {{ profileProp.sex }}
-      </h5>
-      <p class="text-shadow card-text text-center text-dark">
-        {{ profileProp.bio }}
-      </p>
     </div>
   </div>
 </template>
@@ -36,12 +31,14 @@ export default {
 .pic{
   display: inline-block;
   padding: 8px;
-  background: linear-gradient(130deg, #aa50e2, #ffa10a);
+  // background: linear-gradient(130deg, #aa50e2, #ffa10a);
+  background: linear-gradient(130deg, rgb(2, 223, 149), rgb(233, 65, 233));
   object-fit: cover;
   margin: auto;
   border-radius: 50%;
-  width: 150px;
-  height:150px;
+  width: 200px;
+  height:200px;
+  box-shadow: 6px,6px,12px,16px black;
 }
 // .transparent{
 //    background-color: rgba(255, 255, 255, 0.438);
@@ -66,8 +63,8 @@ export default {
 
 .border-wrap:hover{
   color: #aa50e2;
-  background: rgba(121, 252, 252, 0.76);
-  box-shadow: 0 0 10px #aa50e2, 0 0 40px #aa50e2, 0 0 80px #aa50e2;
+  background: rgba(0, 255, 255, 0.63);
+  box-shadow: 0 0 10px aqua, 0 0 40px rgba(121, 252, 252, 0.76), 0 0 80px aqua;
   transition-delay: 1s;
 
 }
@@ -125,6 +122,12 @@ export default {
 }
 
 .text-shadow{
-  text-shadow: 2px 2px, #aa50e2;
+  text-shadow:8px 8px, #aa50e2;
+  font-family: 'Righteous', cursive;
+}
+
+.rounded{
+  border-radius: 50%;
+  font-family: 'Righteous', cursive;
 }
 </style>
