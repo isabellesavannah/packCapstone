@@ -86,7 +86,7 @@ import { reactive } from '@vue/reactivity'
 import { computed, onMounted } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 // import ProfileComponent from '../components/ProfileComponent.vue'
-import { profileService } from '../services/ProfileService'
+// import { profileService } from '../services/ProfileService'
 const url = require('../assets/C-Video.mp4')
 export default {
   name: 'ProfilesPage',
@@ -97,7 +97,7 @@ export default {
       filterOptions: {}
     })
     onMounted(() => {
-      profileService.getAll()
+      // profileService.getAll()
       document.getElementById('main-video').play()
     })
     return {
@@ -106,7 +106,8 @@ export default {
       filterProfiles() {
         state.filteredProfiles = state.profiles
         const options = state.filterOptions
-        state.filteredProfiles = state.filteredProfiles.filter(profile => {
+        AppState.profiles = state.filteredProfiles.filter(profile => {
+          // debugger
           for (const key in options) {
             const option = options[key]
             if (profile[key] !== option) {
@@ -115,6 +116,7 @@ export default {
           }
           return true
         })
+        console.log(AppState.profiles)
         state.filterOptions = {}
       }
     }
