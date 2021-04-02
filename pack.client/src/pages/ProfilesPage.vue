@@ -8,7 +8,7 @@
             <i class="icon fas fa-dog fa-lg"><i class="fas fa-search"></i></i>
           </button>
           <div>
-            <button class="btn btn-dark" type="submit" @submit.prevent="state.profiles">
+            <button class="btn btn-dark mt-2" type="submit" @submit.prevent="state.profiles">
               Clear Filter
             </button>
           </div>
@@ -19,7 +19,7 @@
             <div class="modal-content">
               <div class="modal-header fetch">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span class="text-danger mr-1" aria-hidden="true">&times;</span>
+                  <span class="text-dark mr-1" aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="modal-title" id="myModalLabel">
                   Go Fetch
