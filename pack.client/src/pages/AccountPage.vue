@@ -16,6 +16,12 @@
     >
       Invites
     </button>
+    <button
+      v-if="state.account.id !== activeProfile.creatorId"
+      @click="createInvite"
+    >
+      Invite
+    </button>
 
     <button type="button" class="position-absolute btn btn-demo text-light" style="top: 20%; left: 3%" data-toggle="modal" data-target="#myModal2C">
       Chats
@@ -77,7 +83,8 @@ export default {
       filteredInvitations: computed(() => AppState.invitations.filter(i => !i.accepted)),
       chat: computed(() => AppState.chats),
       invites: computed(() => AppState.invites),
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      activeProfile: computed(() => AppState.activeProfile)
     })
     const route = useRoute()
     onMounted(async() => {
@@ -90,7 +97,10 @@ export default {
 
     return {
       state,
-      activeProfile: computed(() => AppState.activeProfile)
+      activeProfile: computed(() => AppState.activeProfile),
+      async createInvite() {
+        await inviteService.createInvite({ accepted: false, to: state.activeProfile.id, from: '', creatorId: '' })
+      }
     }
   }
 }
