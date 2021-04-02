@@ -1,15 +1,17 @@
 <template>
-  <div class="rounded profilesComponent border-wrap col-3 m-4 ">
+  <div class="rounded profilesComponent border-wrap col-3 m-4">
     <span></span>
     <span></span>
     <span></span>
     <span></span>
-    <h2 class="text-shadow card-title text-center text-light mt-4">
-      {{ profileProp.petName }}
-    </h2>
-    <img class="card-img-center mt-3 pic d-flex justify-content-center" :src="profileProp.img" alt="">
-    <div class="card-body">
-    </div>
+    <router-link class="nounderline" :to="{name:'Account', params:{id:profileProp.id}}">
+      <h2 class="text-shadow card-title text-center text-light mt-4">
+        {{ profileProp.petName }}
+      </h2>
+      <img class="card-img-center mt-3 pic d-flex justify-content-center" :src="profileProp.img" alt="">
+      <div class="card-body nounderline">
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -54,7 +56,9 @@ export default {
 // .card:hover{
 //    box-shadow: 2px 8px 16px 2px aqua;
 // }
-
+.nounderline{
+  text-decoration: none !important;
+}
 .border-wrap{
   text-decoration: none;
   transition: 0.2s;
