@@ -11,8 +11,8 @@ class InviteService {
     return await dbContext.Invite.findByIdAndDelete(id)
   }
 
-  async getInvites(query = {}) {
-    const invites = (await dbContext.Invite.find(query))
+  async getInvites(profileId) {
+    const invites = (await dbContext.Invite.find({ to: profileId }))
     return invites
   }
 } export const inviteService = new InviteService()

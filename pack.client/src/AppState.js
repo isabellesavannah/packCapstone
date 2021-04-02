@@ -8,5 +8,6 @@ export const AppState = reactive({
   activeProfile: {},
   activeChat: {},
   chats: [],
-  invitations: []
+  invitations: [],
+  invites: []
 })

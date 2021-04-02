@@ -2,9 +2,9 @@ import { api } from './AxiosService'
 import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
 export default class InviteService {
-  async getAll() {
+  async getAll(id) {
     try {
-      const res = await api.get('api/invites')
+      const res = await api.get('api/invites/' + id)
       AppState.invites = res.data
     } catch (error) {
       logger.error(error)
