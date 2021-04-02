@@ -7,7 +7,13 @@
       <p>{{ activeProfile.bio }}</p>
     </div>
 
-    <button type="button" class="position-absolute btn btn-demo text-light" style="top: 20%; right: 3%" data-toggle="modal" data-target="#myModal2">
+    <button type="button"
+            class="position-absolute btn btn-demo text-light"
+            style="top: 20%; right: 3%"
+            data-toggle="modal"
+            data-target="#myModal2"
+            v-if="state.account.id == activeProfile.creatorId"
+    >
       Invites
     </button>
 
@@ -69,13 +75,17 @@ export default {
     const state = reactive({
       invitations: computed(() => AppState.invitations),
       filteredInvitations: computed(() => AppState.invitations.filter(i => !i.accepted)),
-      chat: computed(() => AppState.chats)
+      chat: computed(() => AppState.chats),
+      account: computed(() => AppState.account)
     })
     const route = useRoute()
-    onMounted(() => profileService.getProfileById(route.params.id))
-    onMounted(() => invitationService.getInvitationById(route.params.id))
-    onMounted(() => chatsService.getAllChatsById(route.params.id))
-    onMounted(() => inviteService.getAll(route.params.id))
+    onMounted(() => {
+      profileService.getProfileById(route.params.id)
+      invitationService.getInvitationById(route.params.id)
+      chatsService.getAllChatsById(route.params.id)
+      inviteService.getAll(route.params.id)
+    })
+
     return {
       state,
       activeProfile: computed(() => AppState.activeProfile)

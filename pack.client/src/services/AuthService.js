@@ -20,7 +20,7 @@ export const AuthService = initialize({
   }
 })
 
-AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function () {
+AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function() {
   setBearer(AuthService.bearer)
   AppState.user = AuthService.user
   await accountService.getAccount()
@@ -43,6 +43,7 @@ AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function () {
 
   console.log(window.location)
   const foundProfile = AppState.profiles.find(p => p.creatorId === AppState.account._id)
+  AppState.myProfile = foundProfile
   if (foundProfile === undefined) {
     router.push({ name: 'CreateProfile' })
   } else if (window.location.href.includes('Profiles')) {
