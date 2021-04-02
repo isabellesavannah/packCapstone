@@ -8,8 +8,8 @@
             <i class="icon fas fa-dog fa-lg"><i class="fas fa-search"></i></i>
           </button>
           <div>
-            <button class="btn btn-dark mt-2" type="submit" @submit.prevent="state.profiles">
-              Clear Filter
+            <button class="btn btn-dark mt-2" type="button" @click="resetFilters()">
+              Retrieve Dogs
             </button>
           </div>
         </div>
@@ -90,6 +90,7 @@
 import { reactive } from '@vue/reactivity'
 import { computed, onMounted } from '@vue/runtime-core'
 import { AppState } from '../AppState'
+import { profileService } from '../services/ProfileService'
 // import { profileService } from '../services/ProfileService'
 const url = require('../assets/C-Video.mp4')
 export default {
@@ -120,6 +121,9 @@ export default {
           return true
         })
         state.filterOptions = {}
+      },
+      resetFilters() {
+        profileService.getAll()
       }
     }
   }
