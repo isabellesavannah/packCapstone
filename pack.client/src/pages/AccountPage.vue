@@ -76,7 +76,8 @@ export default {
       invitations: computed(() => AppState.invitations),
       filteredInvitations: computed(() => AppState.invitations.filter(i => !i.accepted)),
       chat: computed(() => AppState.chats),
-      invites: computed(() => AppState.invites)
+      invites: computed(() => AppState.invites),
+      account: computed(() => AppState.account)
     })
     const route = useRoute()
     onMounted(async() => {
