@@ -76,14 +76,16 @@ export default {
       invitations: computed(() => AppState.invitations),
       filteredInvitations: computed(() => AppState.invitations.filter(i => !i.accepted)),
       chat: computed(() => AppState.chats),
+      invites: computed(() => AppState.invites),
       account: computed(() => AppState.account)
     })
     const route = useRoute()
-    onMounted(() => {
-      profileService.getProfileById(route.params.id)
-      invitationService.getInvitationById(route.params.id)
-      chatsService.getAllChatsById(route.params.id)
-      inviteService.getAll(route.params.id)
+    onMounted(async() => {
+      await profileService.getProfileById(route.params.id)
+      await invitationService.getInvitationById(route.params.id)
+
+      await inviteService.getInvitesByProfileId(route.params.id)
+      await state.invites.forEach(i => chatsService.getAllChatsById(i.id))
     })
 
     return {

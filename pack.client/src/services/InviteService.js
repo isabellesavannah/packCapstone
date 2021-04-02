@@ -2,7 +2,7 @@ import { api } from './AxiosService'
 import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
 export default class InviteService {
-  async getAll(id) {
+  async getInvitesByProfileId(id) {
     try {
       const res = await api.get('api/UserProfile/' + id + '/invites')
       AppState.invites = res.data

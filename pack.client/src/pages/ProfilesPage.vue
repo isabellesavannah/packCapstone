@@ -14,7 +14,7 @@
         </div>
         <!-- modal pop up -->
         <div class="modal left fade form-text" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-          <div class="modal-dialog" role="document">
+          <div class="modal-dialog " role="document">
             <div class="modal-content">
               <div class="modal-header fetch">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -132,7 +132,7 @@ export default {
 <style>
 
 .background1{
-  background-color: black;
+  background-color: #000000;
 }
 
 /* *{
@@ -166,7 +166,7 @@ padding: 15px 15px 80px;
 
 /*Left*/
 .modal.left.fade .modal-dialog{
-left: -465px;
+/* left: auto; */
 -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
   -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
     -o-transition: opacity 0.3s linear, left 0.3s ease-out;
@@ -174,7 +174,10 @@ left: -465px;
 }
 
 .modal.left.fade.in .modal-dialog{
-left: 20;
+/* left: auto; */
+}
+.modal-dialog{
+margin-left: 0 !important;
 }
 
 /* ----- MODAL STYLE ----- */
