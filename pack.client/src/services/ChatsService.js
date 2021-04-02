@@ -5,7 +5,7 @@ import { logger } from '../utils/Logger'
 export default class ChatsService {
   async getAllChatsById(id) {
     try {
-      const res = await api.get('api/userprofile/' + id + '/chats')
+      const res = await api.get('api/invites/' + id + '/chat')
       AppState.chats[id] = res.data
     } catch (error) {
       logger.error(error)

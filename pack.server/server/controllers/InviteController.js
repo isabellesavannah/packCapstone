@@ -1,6 +1,7 @@
 import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { inviteService } from '../services/InviteService'
+import { chatService } from '../services/ChatService'
 
 export class InviteController extends BaseController {
   constructor() {
@@ -10,11 +11,20 @@ export class InviteController extends BaseController {
       .get('', this.getAll)
       .post('', this.create)
       .delete('/:id', this.delete)
+      .get('/:id/chat', this.getChatById)
   }
 
   async getAll(req, res, next) {
     try {
       return res.send(await inviteService.getInvites(req.query))
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getChatById(req, res, next) {
+    try {
+      res.send(await chatService.findByInvId(req.params.id))
     } catch (error) {
       next(error)
     }

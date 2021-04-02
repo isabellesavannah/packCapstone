@@ -14,8 +14,8 @@ class ChatService {
     return await dbContext.Chat.findByIdAndDelete(id)
   }
 
-  async findById(id) {
-    const chat = await dbContext.Chat.findById(id).populate('creator')
+  async findByInvId(id) {
+    const chat = await dbContext.Chat.find({ to: id }).populate({ path: 'to' })
     if (!chat) {
       throw new BadRequest('Invalid Id')
     }

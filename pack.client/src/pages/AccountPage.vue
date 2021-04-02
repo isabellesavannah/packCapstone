@@ -11,6 +11,10 @@
       Invites
     </button>
 
+    <button type="button" class="position-absolute btn btn-demo text-light" style="top: 20%; left: 3%" data-toggle="modal" data-target="#myModal2C">
+      Chats
+    </button>
+
     <!-- Modal -->
     <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
       <div class="modal-dialog" role="document">
@@ -31,6 +35,23 @@
         </div><!-- modal-content -->
       </div><!-- modal-dialog -->
     </div><!-- modal -->
+    <div class="modal right fade" id="myModal2C" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2C">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel2C">
+            </h4>
+          </div>
+
+          <div class="modal-body">
+            <Chat v-for="chat in state.chats" :key="chat.id" :chat-prop="chat" />
+          </div>
+        </div><!-- modal-content -->
+      </div><!-- modal-dialog -->
+    </div><!-- modal -->
   </div><!-- container -->
 </template>
 
@@ -40,16 +61,21 @@ import { AppState } from '../AppState'
 import { profileService } from '../services/ProfileService'
 import { useRoute } from 'vue-router'
 import { invitationService } from '../services/InvitationService'
+import { chatsService } from '../services/ChatsService'
+import { inviteService } from '../services/InviteService'
 export default {
   name: 'Account',
   setup() {
     const state = reactive({
       invitations: computed(() => AppState.invitations),
-      filteredInvitations: computed(() => AppState.invitations.filter(i => !i.accepted))
+      filteredInvitations: computed(() => AppState.invitations.filter(i => !i.accepted)),
+      chat: computed(() => AppState.chats)
     })
     const route = useRoute()
     onMounted(() => profileService.getProfileById(route.params.id))
     onMounted(() => invitationService.getInvitationById(route.params.id))
+    onMounted(() => chatsService.getAllChatsById(route.params.id))
+    onMounted(() => inviteService.getAll(route.params.id))
     return {
       state,
       activeProfile: computed(() => AppState.activeProfile)

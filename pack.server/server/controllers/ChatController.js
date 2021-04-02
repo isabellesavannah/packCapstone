@@ -7,18 +7,18 @@ export class ChatController extends BaseController {
     super('api/chat')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
-      .get('', this.getAllById)
+      // .get('', this.getAllById)
       .post('', this.create)
       .delete('/:id', this.delete)
   }
 
-  async getAllById(req, res, next) {
-    try {
-      return res.send(await chatService.find(req.query))
-    } catch (error) {
-      next(error)
-    }
-  }
+  // async getAllById(req, res, next) {
+  //   try {
+  //     return res.send(await chatService.findById(req.params.id))
+  //   } catch (error) {
+  //     next(error)
+  //   }
+  // }
 
   async create(req, res, next) {
     try {

@@ -1,5 +1,5 @@
 <template>
-  <div class="modal createChatModal" :id="'createChatModal' + userProfile.id" tabindex="-1" role="dialog">
+  <div class="modal createChatModal" :id="'createChatModal' + state.chat.id" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
@@ -32,18 +32,22 @@ import $ from 'jquery'
 
 export default {
   name: 'Chat',
+  props: {
+    chatProp: { type: Object, required: true }
+  },
 
-  setup() {
+  setup(props) {
     const state = reactive({
       newChat: {},
       activeUserProfile: computed(() => AppState.activeProfile),
-      chats: computed(() => AppState.chats.filter((c) => c.userId === state.userProfile.id))
+      chat: computed(() => AppState.chats.filter((c) => c.to === state.userProfile.id))
     })
     return {
       state,
       async createChat() {
         // eslint-disable-next-line no-unused-expressions
         // state.newChat.userProfileId = props.profile.id
+        // state.newChat.id = props.chat.id
         await chatsService.createChat(state.newChat)
         $('#createChatModal' + `${state.newChat.id}`).modal('toggle')
         state.newChat = {}
