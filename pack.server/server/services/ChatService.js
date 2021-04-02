@@ -15,7 +15,7 @@ class ChatService {
   }
 
   async findByInvId(id) {
-    const chat = await dbContext.Chat.find({ to: id }).populate({ path: 'to' })
+    const chat = await dbContext.Chat.find({ to: id })
     if (!chat) {
       throw new BadRequest('Invalid Id')
     }

@@ -69,13 +69,18 @@ export default {
     const state = reactive({
       invitations: computed(() => AppState.invitations),
       filteredInvitations: computed(() => AppState.invitations.filter(i => !i.accepted)),
-      chat: computed(() => AppState.chats)
+      chat: computed(() => AppState.chats),
+      invites: computed(() => AppState.invites)
     })
     const route = useRoute()
-    onMounted(() => profileService.getProfileById(route.params.id))
-    onMounted(() => invitationService.getInvitationById(route.params.id))
-    onMounted(() => chatsService.getAllChatsById(route.params.id))
-    onMounted(() => inviteService.getAll(route.params.id))
+    onMounted(async() => {
+      await profileService.getProfileById(route.params.id)
+      await invitationService.getInvitationById(route.params.id)
+
+      await inviteService.getInvitesByProfileId(route.params.id)
+      await state.invites.forEach(i => chatsService.getAllChatsById(i.id))
+    })
+
     return {
       state,
       activeProfile: computed(() => AppState.activeProfile)
