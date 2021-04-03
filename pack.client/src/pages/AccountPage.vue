@@ -19,9 +19,6 @@
       >
         <i class="fas fa-comments fa-lg color-light"></i>
       </button>
-      <div class="invites">
-        <Invitation v-for="invitation in state.filteredInvitations" :key="invitation._id" :invitation-prop="invitation" />
-      </div>
     </div>
 
     <button type="button"
