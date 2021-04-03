@@ -51,8 +51,8 @@
     <!-- Modal -->
     <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
       <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
+        <div class="modal-content fetch">
+          <div class="modal-header fetch">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -61,6 +61,10 @@
           </div>
 
           <div class="modal-body">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
             <span v-if="state.invitations.length">
               <Invitation v-for="invitation in state.filteredInvitations" :key="invitation._id" :invitation-prop="invitation" />
             </span>
@@ -128,6 +132,13 @@ export default {
 </script>
 
 <style scoped>
+
+.fetch{
+background: linear-gradient(#aa50e2, #000000);
+background-color: black;
+box-shadow: 0px, 6px, 8px, 0px black
+}
+
 .background1{
   background-color: black;
 }
@@ -237,5 +248,71 @@ img {
   width: 20%;
   margin-left: 5px;
   margin-bottom: 5px;
+}
+
+.border-wrap{
+  text-decoration: none;
+  transition: 0.2s;
+  overflow: hidden;
+}
+
+.border-wrap:hover{
+  color: #aa50e2;
+  background: rgba(0, 255, 255, 0.63);
+  box-shadow: 0 0 10px aqua, 0 0 40px rgba(121, 252, 252, 0.76), 0 0 80px aqua;
+  transition-delay: 1s;
+
+}
+.border-wrap span{
+  position: absolute;
+  display: block;
+}
+.border-wrap span:nth-child(1){
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg,transparent,#aa50e2);
+}
+.border-wrap:hover span:nth-child(1){
+  left: 100%;
+  transition: 1s;
+}
+.border-wrap span:nth-child(3){
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg,transparent,#aa50e2);
+}
+.border-wrap:hover span:nth-child(3){
+  right: 100%;
+  transition: 1s;
+  transition-delay: 0.5s;
+
+}
+.border-wrap span:nth-child(2){
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg,transparent,#aa50e2);
+}
+.border-wrap:hover span:nth-child(2){
+  top: 100%;
+  transition: 1s;
+  transition-delay: 0.25s;
+}
+.border-wrap span:nth-child(4){
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg,transparent,#aa50e2);
+}
+.border-wrap:hover span:nth-child(4){
+  bottom: 100%;
+  transition: 1s;
+  transition-delay: 0.75s;
 }
 </style>
