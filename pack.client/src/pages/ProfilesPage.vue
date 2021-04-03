@@ -78,7 +78,8 @@
       </div><!-- container -->
       <!-- end modal -->
       <!-- start video -->
-      <video class="video" id="main-video" muted>
+
+      <video class="video videoresize" id="main-video" muted>
         <source
           :src="url"
           type="video/mp4"
@@ -148,6 +149,20 @@ export default {
 .bg1{
   background-color: #1a1919a4;
 }
+/*for mobile screen smaller than 992*/
+@media screen and (max-width: 992px) {
+  .videoresize{
+    width: 200px;
+    height: 200px;
+  }
+}
+/*for mobile screen larger than 992*/
+/* @media screen and (min-width: 993px) {
+  .videoresize{
+    width: 200px;
+    height: 200px;
+  }
+} */
 
 /* *{
   border: 1px dotted red;

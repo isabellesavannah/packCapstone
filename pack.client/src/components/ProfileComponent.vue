@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded profilesComponent border-wrap col-3 m-4">
+  <div class="rounded profilesComponent border-wrap col-12 col-md-3 m-4">
     <span></span>
     <span></span>
     <span></span>
