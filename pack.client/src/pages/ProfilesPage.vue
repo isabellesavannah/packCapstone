@@ -26,7 +26,7 @@
                 </h4>
               </div>
 
-              <div class="modal-body form card fetch m-2 stuff">
+              <div class="modal-body form fetch stuff">
                 <form class="form card border-wrap " @submit.prevent="filterProfiles">
                   <span></span>
                   <span></span>
@@ -62,7 +62,11 @@
                         <option>Low Energy</option>
                       </select>
                     </div>
-                    <button class="btn btn-dark text-light border-wrap m-3 close" type="submit" aria-label="Close">
+                    <button class="btn btn-dark text-dark border-wrap m-3 close" type="submit" aria-label="Close">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
                       Go Fetch
                     </button>
                   </div>
@@ -140,6 +144,9 @@ export default {
 
 .background1{
   background-color: #000000;
+}
+.bg1{
+  background-color: #1a1919a4;
 }
 
 /* *{

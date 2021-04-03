@@ -182,7 +182,7 @@ padding: 15px 15px 80px;
 
 /*Right*/
 .modal.right.fade .modal-dialog {
-right: 70px;
+margin-right: 0 !important;
 -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
 -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
 -o-transition: opacity 0.3s linear, right 0.3s ease-out;
@@ -190,7 +190,7 @@ transition: opacity 0.3s linear, right 0.3s ease-out;
 }
 
 .modal.right.fade.in .modal-dialog {
-right: 0;
+/* right: 0; */
 }
 
 /* ----- MODAL STYLE ----- */
