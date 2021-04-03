@@ -6,7 +6,7 @@
         <h5 class="card-title text-center">
           {{ invitationProp.inviteId.creator.petName }}
         </h5>
-        <button class="btn btn-danger" @click="deleteInvitation">
+        <button class="float-right btn btn-danger " @click="deleteInvitation">
           Decline
         </button> <button class="float-right btn btn-success" @click="acceptInvitation">
           Accept

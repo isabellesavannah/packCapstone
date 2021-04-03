@@ -4,7 +4,24 @@
       <img class="card-img-top" :src="activeProfile.img" alt="" />
 
       <h1>{{ activeProfile.petName }}</h1>
-      <p>{{ activeProfile.bio }}</p>
+      <hr>
+      <p><strong>Energy Level: {{ activeProfile.energy }}</strong></p>
+      <br>
+      <p><strong>Gender: {{ activeProfile.sex }}</strong></p>
+      <br>
+      <h5>{{ activeProfile.bio }}</h5>
+      <hr>
+      <p><strong>Fixed: {{ activeProfile.fixed }} </strong></p>
+      <p><strong>Size: {{ activeProfile.size }}</strong></p>
+      <button class="btn btn-dark invite-button"
+              v-if="state.account.id !== activeProfile.creatorId"
+              @click="createInvite"
+      >
+        <i class="fas fa-comments fa-lg color-light"></i>
+      </button>
+      <div class="invites">
+        <Invitation v-for="invitation in state.filteredInvitations" :key="invitation._id" :invitation-prop="invitation" />
+      </div>
     </div>
 
     <button type="button"
@@ -16,14 +33,21 @@
     >
       Invites
     </button>
-    <button
-      v-if="state.account.id !== activeProfile.creatorId"
-      @click="createInvite"
+    <!-- INVITE BUTTON -->
+    <!-- <button class="btn btn-dark"
+            v-if="state.account.id !== activeProfile.creatorId"
+            @click="createInvite"
     >
-      Invite
-    </button>
+      <i class="fas fa-comments fa-lg"></i>
+    </button> -->
 
-    <button type="button" class="position-absolute btn btn-demo text-light" style="top: 20%; left: 3%" data-toggle="modal" data-target="#myModal2C">
+    <button type="button"
+            class="position-absolute btn btn-demo text-light"
+            style="top: 20%; left: 3%"
+            data-toggle="modal"
+            data-target="#myModal2C"
+            v-if="state.account.id == activeProfile.creatorId"
+    >
       Chats
     </button>
 
@@ -128,7 +152,7 @@ export default {
   box-shadow: 2px 6px 8px 2px #aa50e2;
   transition: 0.3s ease-in-out;
   width: 65%;
-  height: 85%;
+  height: auto;
 }
 
 .card:hover{
@@ -205,5 +229,16 @@ img {
   max-width:30rem;
   max-height: 77%;
   object-fit: cover;
+}
+
+.invites{
+  height: 10%;
+  width: 30%
+}
+
+.invite-button{
+  width: 20%;
+  margin-left: 5px;
+  margin-bottom: 5px;
 }
 </style>
