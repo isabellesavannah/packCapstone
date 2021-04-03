@@ -83,7 +83,8 @@ export default {
     const state = reactive({
       dropOpen: false,
       profile: computed(() => AppState.myProfile),
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      activeUserProfile: computed(() => AppState.activeProfile)
     })
     return {
       state,

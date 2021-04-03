@@ -1,5 +1,5 @@
 <template>
-  <div class="modal createChatModal" :id="'createChatModal' + state.chat.id" tabindex="-1" role="dialog">
+  <div class="modal chatModal" id="chatModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
@@ -15,6 +15,7 @@
               Send
             </button>
           </form>
+          <Chat v-for="chat in state.chat" :key="chat.id" />
         </div>
       </div>
     </div>
@@ -31,25 +32,29 @@ import { chatsService } from '../services/ChatsService'
 import $ from 'jquery'
 
 export default {
-  name: 'Chat',
+  name: 'ChatModal',
   props: {
-    chatProp: { type: Object, required: true }
+    inviteProp: { type: Object, required: true }
   },
 
   setup(props) {
     const state = reactive({
       newChat: {},
       activeUserProfile: computed(() => AppState.activeProfile),
-      chat: computed(() => AppState.chats.filter((c) => c.to === state.userProfile.id))
+      myProfile: computed(() => AppState.myProfile),
+      chat: computed(() => AppState.chats.filter((c) => c.to === state.myProfile.id)),
+      invites: computed(() => AppState.invites),
+      invitation: computed(() => AppState.invitations)
     })
     return {
       state,
+
       async createChat() {
         // eslint-disable-next-line no-unused-expressions
         // state.newChat.userProfileId = props.profile.id
-        // state.newChat.id = props.chat.id
+        state.newChat.to = state.invitation.id
         await chatsService.createChat(state.newChat)
-        $('#createChatModal' + `${state.newChat.id}`).modal('toggle')
+        $('#chatModal').modal('toggle')
         state.newChat = {}
       }
     }

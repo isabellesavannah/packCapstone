@@ -14,7 +14,7 @@ export default class ChatsService {
 
   async createChat(newChat) {
     try {
-      const res = await api.post('api/chats', newChat)
+      const res = await api.post('api/chat', newChat)
       AppState.chat.push(res.data)
       return res.data._id
     } catch (error) {
