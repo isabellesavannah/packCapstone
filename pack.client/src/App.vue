@@ -9,7 +9,7 @@
     <div class="bg text-light text-center p-4">
       Chasin Tail LLC
       <button class="btn btn-danger float-left" data-target="#chatModal" data-toggle="modal">
-        opennn chat
+        Your Chats
       </button>
     </div>
     <ChatModal />

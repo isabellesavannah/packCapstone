@@ -34,7 +34,14 @@ const routes = [
     name: 'Profiles',
     component: loadPage('ProfilesPage'),
     beforeEnter: authGuard
+  },
+  {
+    path: '/myChats',
+    name: 'myChats/:id',
+    component: loadPage('myChatsPage'),
+    beforeEnter: authGuard
   }
+
 ]
 
 const router = createRouter({

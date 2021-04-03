@@ -84,7 +84,8 @@
           </div>
 
           <div class="modal-body">
-            <Chat v-for="chat in state.chats" :key="chat.id" :chat-prop="chat" />
+            <AcceptedInvitation v-for="invitation in state.acceptedInvitations" :key="invitation.id" :accepted-invites-prop="invitation">
+            </AcceptedInvitation>
           </div>
         </div><!-- modal-content -->
       </div><!-- modal-dialog -->
@@ -106,6 +107,7 @@ export default {
     const state = reactive({
       invitations: computed(() => AppState.invitations),
       filteredInvitations: computed(() => AppState.invitations.filter(i => !i.accepted)),
+      acceptedInvitations: computed(() => AppState.invitations.filter(i => i.accepted)),
       chat: computed(() => AppState.chats),
       invites: computed(() => AppState.invites),
       account: computed(() => AppState.account),
